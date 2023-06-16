@@ -3,7 +3,9 @@
 @import url('./main-page.css');
 @import url('./shopping-list.css');
 
-
+li {
+  list-style: none;
+}
 
 body {
     font-family: 'DM Sans', sans-serif;
