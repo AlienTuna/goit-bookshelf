@@ -1,0 +1,1 @@
+import { bestSellers } from '../src/js/best-sellers.js';
