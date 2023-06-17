@@ -4,22 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookshelf</title>
-    <link rel="stylesheet" href="./css/index.css" />
-  </head>
-  <body>
-    <include src="./partials/header.html"></include>
-    <div class="container">
-      <div class="side-menu">
-        <include src="./partials/home-page/categories-menu.html"></include>
-        <include src="./partials/charity-fonds.html"></include>
-      </div>
-      <div class="main-content">
-        <include src="./partials/home-page/best-sellers.html"></include>
-        <include src="./partials/home-page/category.html"></include>
-      </div>
-    </div>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <include src="./partials/header.html" ></include>
+    <div class="container body-wrapper">
+        <aside class="side-menu">
+            <include src="./partials/home-page/categories-menu.html" ></include>
+            <include src="./partials/charity-fonds.html" ></include>
+        </aside>
+        <div class="main-content">
+            <include src="./partials/home-page/best-sellers.html" ></include>
+            <include src="./partials/home-page/category.html" ></include>
+        </div>
+    </div>    
 
     <include src="./partials/footer.html"></include>
     <include src="./partials/scroll-up.html"></include>
+    <script type="module" src="./index.js"></script>    
   </body>
 </html>

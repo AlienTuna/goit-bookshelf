@@ -2,8 +2,12 @@
 @import url('./footer.css');
 @import url('./main-page.css');
 @import url('./shopping-list.css');
+@import url('./side-menu.css');
 @import url('./scroll-up.css');
 
+li {
+  list-style: none;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -39,5 +43,25 @@ body {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+      padding-left: 24px;
+      padding-right: 24px;
+  }}
+
+
+
+  
+.body-wrapper {
+  display: flex;
+  gap: 40px;
+}
+@media screen and (max-width: 1439.8px) {
+  .body-wrapper {
+    flex-direction: column;
   }
 }
+
+  @media screen and (min-width: 1440px) {
+    .main-content {
+    width: 996px;
+  }
+  }

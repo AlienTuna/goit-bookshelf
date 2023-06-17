@@ -1,0 +1,40 @@
+.books-card-container {
+  display: flex;
+  gap: 24px;
+}
+
+.title-book {
+  color: #111111;
+}
+
+.title-book-span {
+  color: #4f2ee8;
+  
+}
+
+.books-list-title {
+
+color: #b4afaf;
+
+}
+
+.books-btn {
+  display: block;
+  margin-left: auto;
+}
+
+.books-item-link {
+  text-decoration: none;
+}
+
+.books-overlay {
+  display: none;
+}
+
+.books-card-title {
+  color: #111111;
+}
+
+.books-card-author {
+  color: #b4afaf;
+}
