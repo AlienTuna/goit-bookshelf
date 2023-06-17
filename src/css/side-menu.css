@@ -1,0 +1,21 @@
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+@media screen and (min-width: 768px) and (max-width: 1439.8px){
+    .side-menu {
+        flex-direction: row;
+    }
+}
+
+.categories-list-item:hover,
+.categories-list-item:focus {
+    cursor: pointer;
+    color: blue;
+}
+
+.charity-bar {
+    border-radius: 16px;
+    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,#4f2ee8 18.03%,#fff 100%);
+}
