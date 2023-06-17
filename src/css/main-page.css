@@ -1,41 +1,40 @@
 .books-card-container {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 }
 
 .title-book {
-    color: #111111;
+  color: #111111;
 }
 
-.title-book-span{
-color: #4F2EE8;
+.title-book-span {
+  color: #4f2ee8;
+  
 }
 
-.books-list-title{
-    color: #B4AFAF;
+.books-list-title {
+
+color: #b4afaf;
+
 }
 
-.books-item-link{
-    width: 180px;
+.books-btn {
+  display: block;
+  margin-left: auto;
 }
 
-.books-btn{
-    display: block;
-    margin-left: auto;
+.books-item-link {
+  text-decoration: none;
 }
 
-.best-sellers{
-    width: 996px;
+.books-overlay {
+  display: none;
 }
 
-.books-item-link{
-    text-decoration: none;
+.books-card-title {
+  color: #111111;
 }
 
-.books-card-title{
-    color: #111111;
-}
-
-.books-card-author{
-    color: #B4AFAF;
+.books-card-author {
+  color: #b4afaf;
 }
