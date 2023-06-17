@@ -54,3 +54,9 @@ body {
     flex-direction: column;
   }
 }
+
+  @media screen and (min-width: 1440px) {
+    .main-content {
+    width: 996px;
+  }
+  }

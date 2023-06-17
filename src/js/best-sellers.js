@@ -1,8 +1,8 @@
 import Axios from 'axios';
 
-const bestCategories = document.querySelector('.best-wrapper-category');
+const bestCategories = document.querySelector('.best-sellers');
 
-async function fetchBestBooks() {
+async function getBestBooks() {
   try {
     const { data } = await Axios(
       'https://books-backend.p.goit.global/books/top-books',
@@ -12,14 +12,22 @@ async function fetchBestBooks() {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-async function createGalleryItem() {
-  const data = await fetchBestBooks();
+async function createMarkup() {
+  const data = await getBestBooks();
+  createGalleryItem(data);
+}
+
+createMarkup();
+
+function createGalleryItem(data) {
   const markup = `
     ${data
       .map(elements => {
         return `
+      <h1 class="title-book">Best Sellers <span class="title-book-span">Books</span></h1>
+      <ul>
       <li class="books-list"> 
       <h3 class="books-list-title">${elements.list_name}</h3>
         <div class="books-card-container">
@@ -36,8 +44,11 @@ async function createGalleryItem() {
                 class="books-card-title-img"
                 width="180"
                 height="256"
-      
+                loading="lazy"
               />
+              <div class="books-overlay">
+                <p class="books-overlay-text">quick view</p>
+              </div>
              </div> 
               <div class="books-descr">
                 <h3 class="books-card-title">${book.title}</h3>
@@ -54,9 +65,25 @@ async function createGalleryItem() {
       </li>
       `;
       })
-            .join('')}</ul>`;
-    
-   bestCategories.insertAdjacentHTML('beforeend', markup);
+      .join('')}</ul>`;
 
+  bestCategories.insertAdjacentHTML('beforeend', markup);
+
+  const homeBooksBtn = document.querySelectorAll('.books-btn');
+  const homeBookLink = document.querySelectorAll('.books-item-link');
+
+  homeBooksBtn.forEach(btn => {
+    btn.addEventListener('click', event => {
+      const listId = event.target.dataset.id;
+      console.log(listId);
+    });
+  });
+
+  homeBookLink.forEach(book => {
+    book.addEventListener('click', event => {
+      event.preventDefault();
+      const bookId = event.currentTarget.dataset.id;
+      console.log(bookId);
+    });
+  });
 }
-createGalleryItem();
