@@ -1,3 +1,13 @@
+/* Базовые настройки */
+:root {
+  --blue: #4F2EE8;  
+  --gold: #EAC645;
+  --dark: #111111;
+  --white: #FFFFFF;
+  --black: #202024;
+}
+
+
 .list {
     list-style: none;
 }
@@ -24,49 +34,13 @@ body {
     color: #ffffff;
   }
   
-  
-
-.header{
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border: 1.5px solid #111111;
-    border-radius: 0px 0px 8px 8px;
-    
-}
-.header_body{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-  
-  
-.page-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.list{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+/* Переключатиль цветов */
   .switch {
       position: relative;
       display: inline-block;
       width: 40px;
       height: 20px;
+      margin-left: 144px;
     }
     
     .switch input {display:none;}
@@ -79,7 +53,7 @@ body {
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, #4F2EE8 0%, #DCDCDC 100%);
+      background: linear-gradient(180deg, var(--blue) 0%, #DCDCDC 100%);
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -97,11 +71,11 @@ body {
     }
     
     input:checked + .slider {
-      background: linear-gradient(180deg, #4F2EE8 0%, #686868 100%);
+      background: linear-gradient(180deg, var(--blue) 0%, #686868 100%);
     }
     
     input:focus + .slider {
-      background: linear-gradient(180deg, #4F2EE8 0%, #686868 100%);
+      background: linear-gradient(180deg,  var(--blue) 0%, #686868 100%);
     }
     
     input:checked + .slider:before {
@@ -118,25 +92,6 @@ body {
       border-radius: 50%;
     }
   
-  
-    
-    
-    :root {
-      --var-bgcolor: #fff;
-      --var-fontcolor: #000;
-    }
-    
-    
-    [dark] {
-      --var-bgcolor: #333;
-      --var-fontcolor: #eee;
-    }
-    
-    body {
-      background-color: var(--var-bgcolor);
-      color: var(--var-fontcolor);
-    }
-
 
 
     .header-section {
@@ -171,7 +126,7 @@ body {
           display: none;
       }
   
-      .page-nav {
+      .page-nav, .wellcome-div {
           display: none;
       }
   
@@ -185,8 +140,16 @@ body {
           border: none;
           background-color: transparent;    
           cursor: pointer;
+          background-image: url('../image/open-menu-btn.svg');
+          background-repeat: no-repeat;
+          margin-left: 10px;
+
       }
-  
+      
+      .mobile-menu-open-btn:active{
+        background-image: url('../image/close-btn.svg');
+      }
+
       .mobile-menu-icon {
           stroke: var(--second-color);
       }
