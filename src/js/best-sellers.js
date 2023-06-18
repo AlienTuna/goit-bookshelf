@@ -87,3 +87,4 @@ function createGalleryItem(data) {
     });
   });
 }
+export { bestCategories }
