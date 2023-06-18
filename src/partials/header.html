@@ -18,16 +18,22 @@
         </ul>
       </nav>
       
-      <div>
-        <label class="switch" data-start>
-            <input type="checkbox" class="toogle" onchange="changeTheme(this.checked)">
+      <div class="themes">
+        <!-- <label class="switch" data-start>
+            <input type="checkbox" class="toogle" onchange="toggleTheme()" id="slider">
             <span class="slider round"></span>
+        </label> -->
+        <label id="switch" class="switch">
+          <input type="checkbox" onchange="toggleTheme()" id="slider">
+          <span class="slider round"></span>
         </label>
+
+        
     </div>
       
       <div class="wellcome-div">
-        <p>Wellcome!</p>
-        </div>
+          <p>Wellcome!</p>
+          </div>
       
 
 <!-- MOBILE MENU BUTTON OPEN -->
@@ -50,10 +56,10 @@
   </button>
 <nav>
 <ul class="mobile-menu-list-link list">
-    <li class="menu-item">
+    <li class="btn-menu-item">
         <a class="menu-link current link" href="./index.html">HOME</a>
       </li>
-      <li class="menu-item">
+      <li class="btn-menu-item">
         <a class="menu-link link" href="./partials/shopping-list/shopping-list.html">
             <span class="shopping-list">SHOPPING LIST</span> 
             <img src="./image/shop.svg" alt="logo-shop">

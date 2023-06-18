@@ -1,4 +1,3 @@
-/* Базовые настройки */
 :root {
   --blue: #4F2EE8;  
   --gold: #EAC645;
@@ -25,14 +24,7 @@ ol {
 }
   
   
-body {
-    transition: background-color 0.3s ease;
-  }
-  
-  .dark-theme {
-    background-color: #000000;
-    color: #ffffff;
-  }
+
   
 /* Переключатиль цветов */
   .switch {
@@ -145,10 +137,6 @@ body {
           margin-left: 10px;
 
       }
-      
-      .mobile-menu-open-btn:active{
-        background-image: url('../image/close-btn.svg');
-      }
 
       .mobile-menu-icon {
           stroke: var(--second-color);
@@ -206,7 +194,7 @@ body {
   
       .mobile-menu-close-btn:hover,
       .mobile-menu-close-btn:focus {
-          background-color: var(--hover-button);
+          background-color: var(--gold);
       }
   
   
@@ -317,29 +305,22 @@ body {
       .current {
           position: relative;
           color: var(--logo-button-color);
+          z-index: 5;
       }
   
       .current::after {
           content: "";
           position: absolute;
-          left: 0;
-          bottom: 0;
+          left: -5;
+          bottom: 25px;
           display: block;
-          width: 100%;
-          height: 4px;
-          background-color: var(--hover-button);
-          border-radius: 2px;
+          width: 120%;
+          height: 20px;
+          background-color: var(--gold);
+          border-radius: 36px;
           opacity: 1;
+          z-index: 1;
           }
-  
-      .contact-tel,
-      .contact-mail {
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 1.33;
-          letter-spacing: 0.04em;
-          color: var(--contact-description-color);
-  }
   
   }
   
@@ -354,6 +335,7 @@ body {
       .contact-item:not(:last-child) {
               margin-bottom: 4px;
           }
+          
   }
   
   /* ++++++HEADER-DESKTOP++++++ */
@@ -371,7 +353,8 @@ body {
       }
   
       .menu-list {
-          margin-right: 332px;
+          margin-left: 100px;
+          margin-right: 200px;
       }
   
       .menu-link {
@@ -395,5 +378,12 @@ body {
           font-size: 16px;
           line-height: 1.5;
           letter-spacing: 0.02em;
+      }
+      
+      .theme{
+        margin-right: auto;
+      }
+      .wellcome-div{
+        margin-left: 30px;
       }
   }
