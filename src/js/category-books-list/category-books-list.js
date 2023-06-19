@@ -1,25 +1,22 @@
 import axios from 'axios';
 
-
-const mainTitle = document.querySelector('.category-books-list__title');
+const mainTitleCategory = document.querySelector('.category-books-list__title');
 const categoryList = document.querySelector('.category-books-list__list');
-const categoriesQuery = document.querySelector('.categories-list')
-const topBooks = document.querySelector(".best-sellers")
-console.log(mainTitle)
-console.log(categoryList)
+const categoriesQuery = document.querySelector('.categories-list');
+const topBooks = document.querySelector('.best-sellers');
 
 
 categoriesQuery.addEventListener('click', onCategoryClick);
-const URL = 'https://books-backend.p.goit.global/books/category'
+const URL = 'https://books-backend.p.goit.global/books/category';
 
- function fetchCategory(query) {
-  return fetch(`${URL}?category=${query}`).then((res) => res.json());
-  
+function fetchCategory(query) {
+  return fetch(`${URL}?category=${query}`).then(res => res.json());
 }
 
 function renderTargetCategory(categories) {
-  const markup = categories.map(
-    category => `
+  const markup = categories
+    .map(
+      category => `
   <li id="${category._id}" class="category-books-list__item">
     <div class="card__container card">
         <div class="card__img-container">
@@ -33,29 +30,29 @@ function renderTargetCategory(categories) {
     </div>
 </li>
   `
-  ).join('')
+    )
+    .join('');
 
-  categoryList.innerHTML = markup
+  categoryList.innerHTML = markup;
 }
 
- function getCategory(query) {
-  fetchCategory(query).then((res) => {
+function getCategory(query) {
+  fetchCategory(query).then(res => {
     renderTargetCategory(res);
     console.log(res);
-
   });
 }
 
-
-
-
-
 function onCategoryClick(e) {
+  let value = e.target.textContent;
+  let query = value.split(' ').join('%20');
+  let categoryTitle = value.split(' ');
+  
+  categoryTitle[categoryTitle.length - 1] = `<span class="paintedWord">${categoryTitle[categoryTitle.length - 1]}</span>`
+console.log(categoryTitle.join(''))
+mainTitleCategory.innerHTML = ''
+  getCategory(query);
+  topBooks.style.display = 'none';
+  mainTitleCategory.insertAdjacentHTML('beforeend',categoryTitle.join(' '))
 
-let value = e.target.textContent
-let query = value.split(' ').join('%20')
-console.log(query)
-  getCategory(query)
-  topBooks.style.display = 'none'
 }
-
