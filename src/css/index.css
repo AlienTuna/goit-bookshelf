@@ -55,6 +55,7 @@ body {
 .body-wrapper {
   display: flex;
   gap: 40px;
+  margin-top: 40px;
 }
 @media screen and (max-width: 1439.8px) {
   .body-wrapper {
