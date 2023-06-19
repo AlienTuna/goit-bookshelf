@@ -241,3 +241,15 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.books-list-title.active{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(24/20);
+  color: #4F2EE8;
+}
+
+.books-card-container.active {
+  height: auto;
+  margin-bottom: 80px;
+}
