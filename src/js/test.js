@@ -6,7 +6,7 @@ function addClassOnBtn(theme) {
     if (theme === 'light') {
         document.body.classList.remove('darkThemeBtn');
         document.body.classList.add('lightThemeBtn');
-      } else (theme === 'dark') {
+      } else if (theme === 'dark') {
         document.body.classList.remove('lightThemeBtn');
         document.body.classList.add('darkThemeBtn');
       }
