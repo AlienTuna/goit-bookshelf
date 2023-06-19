@@ -6,6 +6,13 @@
 @import url('./scroll-up.css');
 
 
+:root {
+  background: #D0D0D0;
+}
+
+:root body.dark {
+  background: #111111;
+}
 
 li {
   list-style: none;
