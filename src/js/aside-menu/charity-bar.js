@@ -1,14 +1,34 @@
 import charityList from "./charity-list";
-import SimpleLightbox from "simplelightbox"
+import { tns } from "tiny-slider";
 
 const charityListEl = document.querySelector('.charity-list');
+const downBtn = document.querySelector('.charity-slider-btn');
 
 renderCharityBar(charityList);
 
-const lightbox = new SimpleLightbox('.gallery a', { 
-  
-});
-
+const slider = tns({
+  nav: false,
+  container: '.my-slider',
+  axis: 'vertical',
+  speed: 400,
+  controls: false,
+  nextButton: '.charity-slider-btn',
+  controlsContainer: false,
+  rewind: true,
+  mouseDrag: true,
+  // items: 8,
+  responsive: {
+    375: {
+      items: 4,
+    },
+    768: {
+      items: 6,
+    },
+  }
+})
+downBtn.onclick = function () {
+  slider.goTo('next');
+};
 function renderCharityBar(charityList) {
   const markup = charityList.map(item => `
   <li class="charity-list-item">
@@ -20,9 +40,3 @@ function renderCharityBar(charityList) {
   charityListEl.insertAdjacentHTML('beforeend',markup);
   return;
 }
-
-/*
-      <img srcset="./images/charity-fonds/1@1x.png 2x,
-      ./images/charity-fonds/1@1x.png 1x
-      " alt="${item.title}">
-      */

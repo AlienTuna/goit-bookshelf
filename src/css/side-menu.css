@@ -3,9 +3,9 @@
     
     --scroll-light-theme: #E0E0E0;
     --scroll-firefox-light-theme: #E0E0E0 #00000000;
-
     --scroll-dark-theme: rgba(17, 17, 17, 0.6);
     --scroll-firefox-dark-theme: rgba(17, 17, 17, 0.6) #00000000;
+
     --charity-bar-txt-clr: #fff;
 }
 .side-menu {
@@ -32,7 +32,7 @@
 }
 @media screen and (min-width: 768px) {
     .categories-list {
-        max-height: calc(18px * 9 + 30px * 9);
+        max-height: calc(24px * 9 + 30px * 10);
     }
 }
 /* scroll styling for chrome */
@@ -107,7 +107,10 @@ li.charity-list-item:before {
     display: flex;
     margin: 0 0 40px 0;
 }
-.charity-bar-header>img {
+.charity-bar-header::after {
+    content: url(/src/images/charity-fonds/Ukraine.svg);
+    width: 20px;
+    height: 20px;
     margin-left: 12px;
 }
 .charity-fond-img {
@@ -136,33 +139,33 @@ filter: brightness(0)invert();
     position: relative;
     padding: 5px;
     margin: 30px auto;
-    background: var(--accent-light-theme);
-    height: 50px;
-    width: 50px;
+    background: var(--charity-bar-txt-clr);
+    height: 38px;
+    width: 38px;
     border-radius: 50%;
     transition: all 0.2s linear;
-    border: none
-  }
-/* .down-btn {
-    background: #4F2EE8;
-    transform: matrix(0, -1, -1, 0, 0, 0);
-} */
+    border: none;
+    position: relative;
+}
 .charity-slider-btn:hover {
     transform: translate3d(0, 10px, 0);
-  }
-  .charity-slider-btn::after {
-    content: "";
-    position: absolute;
-    left: 17px;
-    z-index: 11;
-    display: block;
-    width: 25px;
-    height: 25px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    /* border-radius: 4; */
-    transform: matrix(0, -1, -1, 0, 0, 0);
+}
+.charity-slider-btn::after {
+    content: url('/src/images/charity-fonds/down-btn.svg');
+    fill: var(--accent-light-theme);
+}
+#tns1-mw {
+    overflow: hidden;
+}
+.tns-visually-hidden {
+    display: none;
+}
+@media screen and (min-width: 768px) {
 
-    top: 10px;
-    transform: rotate(225deg);
-  }
+    .categories-menu {
+        height: 472px;
+    }
+    .charity-bar {
+        height: 472px;
+    }
+}
