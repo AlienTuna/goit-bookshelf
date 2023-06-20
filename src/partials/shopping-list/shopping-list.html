@@ -1,25 +1,19 @@
-<!-- shopping-list -->
 
 <section class="shopping-list">
-  <h1 class="shopping_list_heading">
-    Shopping <span class="shopping_list_heading_color">List</span>
-  </h1>
-  <ul class="shopping_cards"></ul>
-  <div class="shopping_storage">
-    <p class="shopping_cart_info">
-      This page is empty, add some books and proceed to order.
-    </p>
-    <img
-      srcset="
-        /src/images/shopping-list-empty/shoplist-mob.png         265w,
-        /src/images/shopping-list-empty/shoplist-mob@2x.png      530w,
-        /src/images/shopping-list-empty/shoplist-tab-desk.png    322w,
-        /src/images/shopping-list-empty/shoplist-tab-desk@2x.png 644w
-      "
-      sizes="(min-width: 1440px) 322px, 265px"
-      src="/src/images/shopping-list-empty/shoplist-mob.png"
-      alt="Images haven't found"
-    />
+
+  <div>
+    <h1 class="shop-main-title">
+      Shopping <span class="shop-sub-main-title">List</span>
+    </h1>
+  
+    <div class="shop-base-background js-shop-background">
+      <p class="shop-text-backgr">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <div class="shop-img-backgr"></div>
+    </div>
+  
+    <ul class="shop-list-books js-shop-list"></ul>
   </div>
 </section>
 <include src="pagination.html"></include>
