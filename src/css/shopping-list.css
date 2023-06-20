@@ -1,0 +1,23 @@
+.shopping_list_heading {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.04em;
+
+    margin: 0px 0px 120px;
+}
+
+.shopping_list_heading_color {
+    color: #4F2EE8;
+}
+
+.shopping_cart_info {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0px 0px 14px;
+
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.6);
+}

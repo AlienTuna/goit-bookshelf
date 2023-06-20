@@ -5,7 +5,6 @@ const categoryList = document.querySelector('.category-books-list__list');
 const categoriesQuery = document.querySelector('.categories-list');
 const topBooks = document.querySelector('.best-sellers');
 
-
 categoriesQuery.addEventListener('click', onCategoryClick);
 const URL = 'https://books-backend.p.goit.global/books/category';
 
@@ -22,6 +21,7 @@ function renderTargetCategory(categories) {
         <div class="card__img-container">
             <img src="${category['book_image']}"        
             alt="${category.title}" class="card__img">
+            <p class="img-hover">QUICK VIEW</p>
         </div>
          <div class="card__desc">
             <h3 class="card__heading">${category.title}</h3>
@@ -39,7 +39,6 @@ function renderTargetCategory(categories) {
 function getCategory(query) {
   fetchCategory(query).then(res => {
     renderTargetCategory(res);
-    console.log(res);
   });
 }
 
@@ -47,12 +46,17 @@ function onCategoryClick(e) {
   let value = e.target.textContent;
   let query = value.split(' ').join('%20');
   let categoryTitle = value.split(' ');
-  
-  categoryTitle[categoryTitle.length - 1] = `<span class="paintedWord">${categoryTitle[categoryTitle.length - 1]}</span>`
-console.log(categoryTitle.join(''))
-mainTitleCategory.innerHTML = ''
+  console.log(value);
+  categoryTitle[categoryTitle.length - 1] = `<span class="paintedWord">${
+    categoryTitle[categoryTitle.length - 1]
+  }</span>`;
+
+  if (value.split(' ').includes('All')) {
+    return;
+  }
+
+  mainTitleCategory.innerHTML = '';
   getCategory(query);
   topBooks.style.display = 'none';
-  mainTitleCategory.insertAdjacentHTML('beforeend',categoryTitle.join(' '))
-
+  mainTitleCategory.insertAdjacentHTML('beforeend', categoryTitle.join(' '));
 }
