@@ -22,9 +22,22 @@ ol {
     margin-bottom: 0;
     padding-left: 0;
 }
-  
-  
+ 
+.menu-item img, .logo{
+    height: 25px;
+}
 
+nav{
+    margin-left: 50px;
+}
+
+.wellcome-div{
+    margin-right: 30px;
+}
+
+.item_2{
+    margin-bottom: 7px;
+}
   
 /* Переключатиль цветов */
   .switch {
@@ -32,9 +45,12 @@ ol {
       display: inline-block;
       width: 40px;
       height: 20px;
-      margin-left: 144px;
     }
     
+    .themes{
+        margin-left: inherit;
+    }
+
     .switch input {display:none;}
     
   
@@ -226,7 +242,7 @@ ol {
   }
   
       .mobile-menu-tel {
-          font-family: 'Roboto';
+          font-family: 'DM Sans';
           font-weight: 600;
           font-size: 26px;
           line-height: 1.11;
@@ -291,7 +307,7 @@ ol {
       }
   
       .menu-link {
-          font-family: 'Roboto';
+          font-family: 'DM Sans';
           font-weight: 500;
           font-size: 16px;
           line-height: 1.5;
@@ -302,7 +318,7 @@ ol {
           transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
       }
   
-      .current {
+      /* .current {
           position: relative;
           color: var(--logo-button-color);
           z-index: 5;
@@ -320,7 +336,7 @@ ol {
           border-radius: 36px;
           opacity: 1;
           z-index: 1;
-          }
+          } */
   
   }
   
