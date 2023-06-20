@@ -1,6 +1,6 @@
 :root {
   --blue: #4F2EE8;  
-  --gold: #EAC645;
+  --gold: #eac645;
   --dark: #111111;
   --white: #FFFFFF;
   --black: #202024;
@@ -313,18 +313,22 @@ nav{
           line-height: 1.5;
           letter-spacing: 0.02em;
           color: var(--second-color);
-          padding-top: 24px;
-          padding-bottom: 26px;
+          /* padding-top: 24px;
+          padding-bottom: 26px; */
+          padding: 5px 5px 5px 5px;
           transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
       }
   
-      /* .current {
+       .current {
           position: relative;
           color: var(--logo-button-color);
           z-index: 5;
+          background-color: #eac645;
+          border-radius: 36px;
+
       }
   
-      .current::after {
+      /* .current::after {
           content: "";
           position: absolute;
           left: -5;
@@ -332,12 +336,12 @@ nav{
           display: block;
           width: 120%;
           height: 20px;
-          background-color: var(--gold);
+          /* background-color: var(--gold); */
+          /* background-color: rgba(234, 198, 69, 0.1);
           border-radius: 36px;
           opacity: 1;
           z-index: 1;
-          } */
-  
+          }  */   
   }
   
   
