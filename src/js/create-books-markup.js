@@ -62,11 +62,12 @@ export function createGalleryItem(data) {
   });
 }
 
+//Слухач на кнопку See more
 export function onSeeMoreBtn(e) {
   const listId = e.target.dataset.id;
   createCategoryMarkup(listId);
 }
-
+ //Слухач на клік на книжку для відкриття модалки
 export function onBookClick(e) {
   e.preventDefault();
   const bookId = e.currentTarget.dataset.id;
