@@ -26,3 +26,5 @@ export async function createCategoryMarkup(category) {
   );
   categoryListById.previousElementSibling.classList.add('active');
 }
+
+export { bestCategories };
