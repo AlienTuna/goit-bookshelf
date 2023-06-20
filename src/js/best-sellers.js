@@ -23,11 +23,11 @@ createMarkup();
 
 function createGalleryItem(data) {
   const markup = `
-    ${data
+    <h1 class="title-book">
+      Best Sellers <span class="title-book-span">Books</span>
+    </h1> <ul class="books-container"> ${data
       .map(elements => {
         return `
-      <h1 class="title-book">Best Sellers <span class="title-book-span">Books</span></h1>
-      <ul>
       <li class="books-list"> 
       <h3 class="books-list-title">${elements.list_name}</h3>
         <div class="books-card-container">

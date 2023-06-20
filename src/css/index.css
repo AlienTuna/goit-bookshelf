@@ -5,6 +5,8 @@
 @import url('./side-menu.css');
 @import url('./scroll-up.css');
 
+
+
 li {
   list-style: none;
 }
@@ -53,6 +55,7 @@ body {
 .body-wrapper {
   display: flex;
   gap: 40px;
+  margin-top: 40px;
 }
 @media screen and (max-width: 1439.8px) {
   .body-wrapper {

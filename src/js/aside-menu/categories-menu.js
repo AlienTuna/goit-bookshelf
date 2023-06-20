@@ -1,4 +1,10 @@
 import BookshelfApi from "../bookshelf-api";
+import 'simplebar';
+import 'simplebar/dist/simplebar.css';
+
+//ResizeObserver polyfill for browsers that don't support it! (iOS Safari, Edge, ...)
+import ResizeObserver from 'resize-observer-polyfill';
+window.ResizeObserver = ResizeObserver;
 
 const api = new BookshelfApi;
 
@@ -19,7 +25,8 @@ async function renderCategoriesMenu() {
             return;
         }
         
-        const markup = resultJson.data.map(item => `
+        const markup = '<li class="categories-list-item" selected="true">All categories</li>' 
+        + resultJson.data.map(item => `
         <li class="categories-list-item">${item.list_name}</li>
         `).join('');
 
@@ -37,4 +44,15 @@ async function renderCategoriesMenu() {
 
 
 categoriesListEl.addEventListener('click', onCategoryClick);
-function onCategoryClick(e) {console.log(e.target.textContent)}
+function onCategoryClick(e) {
+    if(e.target.nodeName !== 'LI') {
+        return;
+    }
+
+    const prev = document.querySelectorAll('.categories-list-item[selected="true"]');
+    prev.forEach(element => element.removeAttribute('selected'));
+    e.target.setAttribute('selected', 'true')
+    
+    console.log(e.target.textContent)
+    return e.target.textContent
+}
