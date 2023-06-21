@@ -18,7 +18,7 @@
     line-height: 1.19;
     letter-spacing: -0.04em;
   
-    color: var(--dark-theme);
+    color: var(--text-secondary-color);
   }
 
   @media screen and (min-width: 768px) {
@@ -29,7 +29,7 @@
   }
 
   .shop-sub-main-title {
-    color: var(--color-blue);
+    color: var(--text-fourth-color);
   }
 
   .shop-text-backgr {
@@ -143,7 +143,7 @@
     line-height: 1.12;
     letter-spacing: -0.04em;
   
-    color: var(--dark-theme);
+    color: var(--text-secondary-color);
   
     white-space: nowrap;
     overflow: hidden;
@@ -186,7 +186,7 @@
     line-height: 1.29;
     letter-spacing: -0.04em;
   
-    color: var(--dark-theme);
+    color: var(--text-secondary-color);
     max-height: 68px;
     width: 193px;
     overflow-y: scroll;
@@ -251,7 +251,7 @@
     border-radius: 50% 50%;
     background-repeat: no-repeat;
     background-size: 16px 16px;
-    background-color: var(--color-blue);
+    background-color: var(--text-fourth-color);
     background-position: center;
     background-image: url('/src/images/svg/delete-book.svg');
   }
