@@ -5,12 +5,15 @@ import {
   onBookClick,
 } from './create-books-markup';
 
+//Виклик функції створення головної секції топ книжок 
+createMarkup();
+
 async function createMarkup() {
   const data = await getBestBooks();
   createGalleryItem(data);
 }
 
-createMarkup();
+
 
 //Функція для реалізації підвантаження та перемалювання на кнопку See more
 export async function createCategoryMarkup(category) {
@@ -26,5 +29,3 @@ export async function createCategoryMarkup(category) {
   );
   categoryListById.previousElementSibling.classList.add('active');
 }
-
-export { bestCategories };
