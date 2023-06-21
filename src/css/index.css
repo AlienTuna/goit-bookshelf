@@ -1,6 +1,7 @@
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./main-page.css');
+@import url('./category-list.css');
 @import url('./shopping-list.css');
 @import url('./side-menu.css');
 @import url('./scroll-up.css');
@@ -20,7 +21,7 @@
   /* --text-third-color: #B4AFAF;   */
   
   /* bookshelf-лого */
-  --logo-color: #000000;  
+  --logo-color: #000000;
 }
 
 :root body.dark {
@@ -81,6 +82,7 @@ body {
 .body-wrapper {
   display: flex;
   gap: 40px;
+  margin-top: 40px;
 }
 @media screen and (max-width: 1439.8px) {
   .body-wrapper {

@@ -1,3 +1,13 @@
+:root {
+    --accent-light-theme: #4F2EE8;
+    
+    --scroll-light-theme: #E0E0E0;
+    --scroll-firefox-light-theme: #E0E0E0 #00000000;
+    --scroll-dark-theme: rgba(17, 17, 17, 0.6);
+    --scroll-firefox-dark-theme: rgba(17, 17, 17, 0.6) #00000000;
+
+    --charity-bar-txt-clr: #fff;
+}
 .side-menu {
     display: flex;
     flex-direction: column;
@@ -8,14 +18,154 @@
         flex-direction: row;
     }
 }
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-height: calc(18px * 6 + 30px * 5);
 
+    overflow-y: scroll;
+    scrollbar-color: var(--scroll-firefox-light-theme);
+    scrollbar-width: thin;
+    
+    scrollbar-gutter: stable;
+}
+@media screen and (min-width: 768px) {
+    .categories-list {
+        max-height: calc(24px * 9 + 30px * 10);
+    }
+}
+/* scroll styling for chrome */
+.container-categories-list::-webkit-scrollbar {
+    width: 8px;
+}
+.container-categories-list::-webkit-scrollbar-thumb {
+    background: var(--scroll-light-theme);
+    border-radius: 12px;
+    height: 114px;
+}
+body.dark-theme .container-categories-list::-webkit-scrollbar-thumb {
+    background: rgba(17, 17, 17, 0.6);
+}
+
+
+.categories-list-item {
+    letter-spacing: -0.02em;
+    font-size: 18px;
+    /* line-height: 24px; */
+    padding-right: 30px;
+}
 .categories-list-item:hover,
-.categories-list-item:focus {
+.categories-list-item:focus,
+.categories-list-item[selected="true"] {
     cursor: pointer;
-    color: blue;
+    color: var(--accent-light-theme);
+}
+
+.categories-list-item[selected="true"] {
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .charity-bar {
     border-radius: 16px;
     background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,#4f2ee8 18.03%,#fff 100%);
+    
+    padding: 24px 40px;
+    text-align: center;
+}
+.charity-bar * {
+    font-size: 18px;
+    color: var(--charity-bar-txt-clr);
+}
+
+ol.charity-list {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+	list-style-type: none;
+	counter-reset: li;
+}
+li.charity-list-item {
+    display: flex;
+    align-items: center;
+}
+li.charity-list-item:before {
+    counter-increment: li;
+    content: counter(li, decimal-leading-zero);
+    color: var(--charity-bar-txt-clr);
+    margin-right: 16px;
+    align-self: center;
+  }
+.charity-bar-header {
+    color: var(--charity-bar-txt-clr);
+    letter-spacing: -.04em;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    margin: 0 0 40px 0;
+}
+.charity-bar-header::after {
+    content: url(/src/images/charity-fonds/Ukraine.svg);
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+}
+.charity-fond-img {
+fill: var(--charity-bar-txt-clr);
+filter: brightness(0)invert();
+}
+@media screen and (min-width: 1440px) {
+    .charity-bar {
+        min-width: 356px;
+    } 
+}
+@media screen and (min-width: 768px) {
+    .charity-bar {
+        min-width: 50%;
+    }
+    
+}
+@media screen and (min-width: 1440px) {
+    .charity-slider-btn {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+.charity-slider-btn {
+    position: relative;
+    padding: 5px;
+    margin: 30px auto;
+    background: var(--charity-bar-txt-clr);
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+    border: none;
+    position: relative;
+}
+.charity-slider-btn:hover {
+    transform: translate3d(0, 10px, 0);
+}
+.charity-slider-btn::after {
+    content: url('/src/images/charity-fonds/down-btn.svg');
+    fill: var(--accent-light-theme);
+}
+#tns1-mw {
+    overflow: hidden;
+}
+.tns-visually-hidden {
+    display: none;
+}
+@media screen and (min-width: 768px) {
+
+    .categories-menu {
+        height: 472px;
+    }
+    .charity-bar {
+        height: 472px;
+    }
 }
