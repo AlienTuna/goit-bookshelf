@@ -1,12 +1,4 @@
-const bestSellerRef = document.querySelector('.best-sellers')
-console.log(bestSellerRef)
-bestSellerRef.addEventListener('click', onCardClick)
 
-function onCardClick(e) {
-  console.log(e)
-  const a = e.target
-  console.log(a.closest('[data-id]'))
-}
 
 // =====================================================
 const backDrop = document.querySelector('.backdrop')
@@ -16,17 +8,20 @@ const addBookBtn = document.querySelector('.add-bookBtn')
 const notification = document.querySelector('.notification')
 const removeNotification = document.querySelector('.removeNotification')
 const addNotification = document.querySelector('.addNotification')
-let counter = 0;
+let modalContent = document.querySelector('.modal__content')
 const storegeArr = [];
 
-getCategory();
+
+
+
+
 
 addBookBtn.addEventListener('click', onAddBookClick)
 closeBtn.addEventListener('click', onBtnCloseClick)
 
-function fetchCategory() {
+function fetchCategory(id) {
   return fetch(
-    "https://books-backend.p.goit.global/books/643282b1e85766588626a0a0"
+    `https://books-backend.p.goit.global/books/${id}`
   ).then((res) => res.json());
 }
 
@@ -49,13 +44,19 @@ function renderTargetCategory(id) {
 </div>
 
     `
+
   addBookBtn.insertAdjacentHTML('beforebegin', markup)
+  modalContent = document.querySelector('.modal__content')
+ 
 }
 
-function getCategory() {
-  fetchCategory().then((res) => {
-    renderTargetCategory(res);
+function getCategory(id) {
   
+  fetchCategory(id).then((res) => {
+    renderTargetCategory(res);
+
+    
+
     storegeArr.push(res)
   });
 
@@ -65,6 +66,7 @@ function getCategory() {
 
 function onBtnCloseClick(){
   backDrop.classList.add('is-hidden')
+ 
 }
 
 
@@ -73,9 +75,21 @@ function onAddBookClick(res) {
   notification.classList.toggle('hidden')
   removeNotification.classList.toggle('hidden')
   addNotification.classList.toggle('hidden')
-counter +=1
-if(counter % 2 !== 0){
-  localStorage.setItem('shop-list', JSON.stringify(storegeArr))
-} else{localStorage.removeItem('shop-list', JSON.stringify(storegeArr))}
 
+}
+const bestSellerRef = document.querySelector('.best-sellers')
+const categoriesRef = document.querySelector('.category-books-list')
+
+bestSellerRef.addEventListener('click', onCardClick)
+categoriesRef.addEventListener('click', onCardClick)
+
+function onCardClick(e) {
+
+const card = e.target
+const el = card.closest('[data-id]')
+const id = el.dataset.id
+
+
+getCategory(id);
+backDrop.classList.remove('is-hidden')
 }
