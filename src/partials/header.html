@@ -29,21 +29,16 @@
       </label>
     </div>
 
-    <div class="wellcome-div">
-      <button type="button">Sign up</button>
-      <form class="auth-form">
-        <input type="text" name="name" placeholder="name" />
-        <input type="text" name="email" placeholder="email" />
-        <input type="text" name="password" placeholder="password" />
-        <button type="submit">push</button>
-      </form>
-      <form class="login-form">
-        <input type="text" name="name" placeholder="name" />
-        <input type="text" name="email" placeholder="email" />
-        <input type="text" name="password" placeholder="password" />
-        <button type="submit">login</button>
-      </form>
-      <button type="button" class="data">addData</button>
+    <button type="button" class="open-modal">Sign up</button>
+
+    <div class="backdrop">
+      <div class="modal">
+        <div class="form-wrapper"></div>
+        <button type="button" class="sign-in">Sign in</button>
+        <button type="button" class="sign-up">Sign up</button>
+      </div>
+
+      <!-- <button type="button" class="data">addData</button> -->
     </div>
 
     <!-- MOBILE MENU BUTTON OPEN -->
@@ -88,3 +83,5 @@
 </header>
 
 <script src="./js/header.js"></script>
+<script src="./js/authorization.js" type="module"></script>
+<!-- <script src="./js/modal.js" type="module"></script> -->
