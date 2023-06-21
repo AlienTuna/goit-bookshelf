@@ -1,11 +1,14 @@
-import axios from 'axios';
+
 
 const mainTitleCategory = document.querySelector('.category-books-list__title');
 const categoryList = document.querySelector('.category-books-list__list');
 const categoriesQuery = document.querySelector('.categories-list');
 const topBooks = document.querySelector('.best-sellers');
 
+
 categoriesQuery.addEventListener('click', onCategoryClick);
+
+
 const URL = 'https://books-backend.p.goit.global/books/category';
 
 function fetchCategory(query) {
@@ -16,7 +19,7 @@ function renderTargetCategory(categories) {
   const markup = categories
     .map(
       category => `
-  <li id="${category._id}" class="category-books-list__item">
+  <li data-id="${category._id}" class="category-books-list__item">
     <div class="card__container card">
         <div class="card__img-container">
             <img src="${category['book_image']}"        
@@ -43,6 +46,10 @@ function getCategory(query) {
 }
 
 function onCategoryClick(e) {
+  if(e.target.textContent == 'All categories'){
+    topBooks.style.display = 'block';
+    mainTitleCategory.innerHTML = '';
+  }
   let value = e.target.textContent;
   let query = value.split(' ').join('%20');
   let categoryTitle = value.split(' ');
@@ -59,4 +66,5 @@ function onCategoryClick(e) {
   getCategory(query);
   topBooks.style.display = 'none';
   mainTitleCategory.insertAdjacentHTML('beforeend', categoryTitle.join(' '));
+ 
 }

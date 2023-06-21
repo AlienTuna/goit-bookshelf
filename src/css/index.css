@@ -5,7 +5,7 @@
 @import url('./shopping-list.css');
 @import url('./side-menu.css');
 @import url('./scroll-up.css');
-
+@import url('./modal.css');
 
 :root {
   /* background основного тела */
@@ -16,6 +16,8 @@
   --text-color: rgba(17, 17, 17, 0.6);
   /* карточка-название книги, кнопка see more, шопинглист в header, шопинглист-описание карточки, слово Shopping в шопинглист */
   --text-secondary-color: #111111;
+  /* категории-ховер(фокус) */
+  --text-fourth-color: #4F2EE8;
   
   /* ul-карточек и автор */
   /* --text-third-color: #B4AFAF;   */
@@ -30,6 +32,7 @@
   --text-color: rgba(255, 255, 255, 0.6);  
   --text-secondary-color: #FFFFFF;  
   /* --text-third-color: #B4AFAF;  */
+  --text-fourth-color: #EAC645;
   --logo-color: #F3F3F3;  
 }
 
@@ -72,13 +75,11 @@ body {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-      padding-left: 24px;
-      padding-right: 24px;
-  }}
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
-
-
-  
 .body-wrapper {
   display: flex;
   gap: 40px;
@@ -90,8 +91,8 @@ body {
   }
 }
 
-  @media screen and (min-width: 1440px) {
-    .main-content {
+@media screen and (min-width: 1440px) {
+  .main-content {
     width: 996px;
   }
-  }
+}
