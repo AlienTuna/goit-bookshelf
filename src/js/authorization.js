@@ -32,6 +32,19 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const books = [1, 2, 3];
 
+function userSignOut() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log('Sign-out successful.');
+      logOutBtn.remove();
+      openModalEl.textContent = 'Sign up';
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 function registerUser(evt) {
   evt.preventDefault();
   console.dir(evt.currentTarget);
@@ -53,19 +66,6 @@ function registerUser(evt) {
 }
 
 // formEll.addEventListener('submit', loginUser);
-
-function userSignOut() {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      console.log('Sign-out successful.');
-      logOutBtn.remove();
-      openModalEl.textContent = 'Sign up';
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
 
 async function loginUser(evt) {
   evt.preventDefault();
@@ -128,7 +128,15 @@ function addUser(name) {
   });
 }
 
-// modal
+// MODAL------------------------------------------------------------------
+
+const clozeEl = document.querySelector('.cloze');
+
+clozeEl.addEventListener('click', clozeModal);
+
+function clozeModal() {
+  modalEl.classList.add('is-hidden');
+}
 
 const signInEl = document.querySelector('.sign-in');
 const signUpEl = document.querySelector('.sign-up');
@@ -141,7 +149,7 @@ function signInForm() {
   const markup = `<form class="login-form">
     <input type="text" name="email" placeholder="email" />
     <input type="text" name="password" placeholder="password" />
-    <button type="submit">login</button>
+    <button type="submit" class="login">Login</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEll = document.querySelector('.login-form');
@@ -157,7 +165,7 @@ function openModal() {
     <input type="text" name="name" placeholder="name" />
     <input type="text" name="email" placeholder="email" />
     <input type="text" name="password" placeholder="password" />
-    <button type="submit">push</button>
+    <button type="submit" class="registr">Sign up</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEl = document.querySelector('.auth-form');

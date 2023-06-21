@@ -13,16 +13,133 @@
   overflow-y: scroll;
 }
 .modal {
-  width: 500px;
+  width: 580px;
   height: 750px;
-  background-color: #f6f6f6;
+  background-color: rgba(236, 243, 241, 0.911);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 50px;
+  border-radius: 20px;
+  position: relative;
 }
 .is-hidden {
   display: none;
 }
-/* 
+
 .sign-in {
+  color: aliceblue;
+  margin-left: 26px;
+  margin: 10px;
+  background-color: #4f2ee8;
+  padding: 6px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
 }
 
 .sign-up {
-} */
+  color: aliceblue;
+  background-color: #4f2ee8;
+  padding: 6px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 16px;
+}
+
+.login-form {
+  margin-top: 94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 16px;
+}
+
+.registr {
+  color: aliceblue;
+  background-color: #111;
+  width: 500px;
+  height: 64px;
+  margin-top: 20px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.login {
+  color: aliceblue;
+  background-color: #111;
+  width: 500px;
+  height: 64px;
+  margin-top: 20px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  border-radius: 30px;
+  height: 64px;
+  width: 500px;
+  padding-left: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.cloze {
+  font-weight: 700;
+  font-size: 24px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  background-color: rgba(236, 243, 241, 0.911);
+}
+
+.marg {
+  margin-top: 20px;
+}
+
+.open-modal {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 24px;
+
+  width: 184px;
+  height: 48px;
+  background: #4f2ee8;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.log-out {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 24px;
+
+  width: 184px;
+  height: 48px;
+  background: #fff;
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+  color: #111;
+  cursor: pointer;
+}
