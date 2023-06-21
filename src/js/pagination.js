@@ -8,6 +8,13 @@ var currentPage = 1;
 // Функція для генерації пагінації
 function generatePagination() {
   var paginationElement = document.getElementById("pagination");
+    
+  if (shoppingList.length === 0) {
+    paginationElement.style.display = "none";
+    return;
+  }
+
+  paginationElement.style.display = "block";
   paginationElement.innerHTML = "";
 
   // Додавання кнопки "<<"
