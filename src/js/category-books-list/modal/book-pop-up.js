@@ -1,3 +1,12 @@
+const bestSellerRef = document.querySelector('.best-sellers')
+console.log(bestSellerRef)
+bestSellerRef.addEventListener('click', onCardClick)
+
+function onCardClick(e) {
+  console.log(e)
+  const a = e.target
+  console.log(a.closest('[data-id]'))
+}
 
 // =====================================================
 const backDrop = document.querySelector('.backdrop')
