@@ -9,7 +9,7 @@
 
 :root {
   /* background основного тела */
-  --body-background-color: #D0D0D0;
+  --body-background-color: #F6F6F6;
   /* background header и footer  */
   --body-secondary-color: #FFFFFF;
   /* текст категорий */
@@ -24,6 +24,8 @@
   
   /* bookshelf-лого */
   --logo-color: #000000;
+    /* scroll bar for aside-menu */
+  --scroll-bar: #E0E0E0;
 }
 
 :root body.dark {
@@ -34,6 +36,9 @@
   /* --text-third-color: #B4AFAF;  */
   --text-fourth-color: #EAC645;
   --logo-color: #F3F3F3;  
+
+  /* scroll bar for aside-menu */
+  --scroll-bar: rgba(17, 17, 17, 0.6);
 }
 
 
@@ -49,8 +54,10 @@ body {
   line-height: 1.33;
   font-weight: 400;
 
-  color: #121212;
-  background-color: #f7f7f7;
+  color: var(--text-secondary-color);
+  background-color: var(--body-background-color);
+
+  transition:  0.5s;
 }
 
 /* 375px <= phone screen <= infinity */
