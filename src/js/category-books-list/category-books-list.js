@@ -46,7 +46,7 @@ function onCategoryClick(e) {
   let value = e.target.textContent;
   let query = value.split(' ').join('%20');
   let categoryTitle = value.split(' ');
-  console.log(value);
+  // console.log(value);
   categoryTitle[categoryTitle.length - 1] = `<span class="paintedWord">${
     categoryTitle[categoryTitle.length - 1]
   }</span>`;
