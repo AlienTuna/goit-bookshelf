@@ -1,14 +1,18 @@
-const formEl = document.querySelector('.auth-form');
-const formEll = document.querySelector('.login-form');
-
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getDatabase, ref, set, child, get, update } from 'firebase/database';
+
+const modalEl = document.querySelector('.backdrop');
+const openModalEl = document.querySelector('.open-modal');
+const formWrapperEl = document.querySelector('.form-wrapper');
+
+let logOutBtn = null;
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBoP3LpsEiKYieYZusHkpDBfoZn6Hezx9o',
@@ -23,7 +27,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-formEl.addEventListener('submit', registerUser);
+// formEl.addEventListener('submit', registerUser);
 
 const auth = getAuth(app);
 const books = [1, 2, 3];
@@ -38,6 +42,7 @@ function registerUser(evt) {
       const user = userCredential.user;
       console.log(user);
       addUser(name.value);
+      modalEl.classList.add('is-hidden');
       // ...
     })
     .catch(error => {
@@ -47,21 +52,37 @@ function registerUser(evt) {
     });
 }
 
-formEll.addEventListener('submit', loginUser);
+// formEll.addEventListener('submit', loginUser);
 
-function loginUser(evt) {
+function userSignOut() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log('Sign-out successful.');
+      logOutBtn.remove();
+      openModalEl.textContent = 'Sign up';
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+async function loginUser(evt) {
   evt.preventDefault();
   console.dir(evt.currentTarget);
-  const { name, email, password } = evt.currentTarget.elements;
+  const { email, password } = evt.currentTarget.elements;
 
-  signInWithEmailAndPassword(auth, email.value, password.value)
+  await signInWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
       // Signed in
 
       const user = userCredential.user;
       console.log(user);
-      getData();
+      const userName = getData();
       // ...
+      modalEl.classList.add('is-hidden');
+
+      // openModalEl.textContent = userName.name;
     })
     .catch(error => {
       const errorCode = error.code;
@@ -70,8 +91,8 @@ function loginUser(evt) {
     });
 }
 
-const dataEl = document.querySelector('.data');
-dataEl.addEventListener('click', addData);
+// const dataEl = document.querySelector('.data');
+// dataEl.addEventListener('click', addData);
 
 function addData() {
   console.log(addData);
@@ -88,6 +109,7 @@ function getData() {
     .then(snapshot => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
+        openModalEl.textContent = snapshot.val().name;
       } else {
         console.log('No data available');
       }
@@ -104,4 +126,53 @@ function addUser(name) {
   set(ref(db, 'users/' + auth.currentUser.uid), {
     name: name,
   });
+}
+
+// modal
+
+const signInEl = document.querySelector('.sign-in');
+const signUpEl = document.querySelector('.sign-up');
+
+openModalEl.addEventListener('click', openModal);
+signUpEl.addEventListener('click', openModal);
+signInEl.addEventListener('click', signInForm);
+
+function signInForm() {
+  const markup = `<form class="login-form">
+    <input type="text" name="email" placeholder="email" />
+    <input type="text" name="password" placeholder="password" />
+    <button type="submit">login</button>
+  </form>`;
+  formWrapperEl.innerHTML = markup;
+  const formEll = document.querySelector('.login-form');
+  formEll.addEventListener('submit', loginUser);
+}
+
+function openModal() {
+  if (openModalEl.textContent !== 'Sign up') {
+    createMarkup();
+    return;
+  }
+  const markup = `<form class="auth-form">
+    <input type="text" name="name" placeholder="name" />
+    <input type="text" name="email" placeholder="email" />
+    <input type="text" name="password" placeholder="password" />
+    <button type="submit">push</button>
+  </form>`;
+  formWrapperEl.innerHTML = markup;
+  const formEl = document.querySelector('.auth-form');
+
+  modalEl.classList.remove('is-hidden');
+  formEl.addEventListener('submit', registerUser);
+
+  console.log('openModal');
+}
+openModal();
+
+function createMarkup() {
+  const markup = `<button class="log-out">Log out</button>`;
+
+  openModalEl.insertAdjacentHTML('afterend', markup);
+  logOutBtn = document.querySelector('.log-out');
+  logOutBtn.addEventListener('click', userSignOut);
 }

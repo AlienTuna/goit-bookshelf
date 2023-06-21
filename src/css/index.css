@@ -5,7 +5,7 @@
 @import url('./shopping-list.css');
 @import url('./side-menu.css');
 @import url('./scroll-up.css');
-
+@import url('./modal.css');
 
 :root {
   /* background основного тела */
@@ -72,13 +72,11 @@ body {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-      padding-left: 24px;
-      padding-right: 24px;
-  }}
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
-
-
-  
 .body-wrapper {
   display: flex;
   gap: 40px;
@@ -90,8 +88,8 @@ body {
   }
 }
 
-  @media screen and (min-width: 1440px) {
-    .main-content {
+@media screen and (min-width: 1440px) {
+  .main-content {
     width: 996px;
   }
-  }
+}
