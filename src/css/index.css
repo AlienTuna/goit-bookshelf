@@ -9,6 +9,10 @@
 
 :root {
   background: #D0D0D0;
+  --color-blue: #4F2EE8;
+  --color-yellow: #EAC645;
+  --dark-theme: #111111;
+  --ligtht-theme: #FFFFFF;
 }
 
 :root body.dark {
