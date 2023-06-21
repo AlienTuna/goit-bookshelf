@@ -2,6 +2,34 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 17, 17, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  width: 100vw;
+  overflow-y: scroll;
+}
+.modal {
+  width: 500px;
+  height: 750px;
+  background-color: #f6f6f6;
+}
+.is-hidden {
+  display: none;
+}
+/* 
+.sign-in {
+}
+
+.sign-up {
+} */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
