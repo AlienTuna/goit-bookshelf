@@ -5,3 +5,4 @@ import './js/header.js'
 import './js/category-books-list/category-books-list.js'
 import './js/theme.js'
 import '../src/js/scroll-up.js';
+import '/src/js/shopping-page.js';

@@ -53,6 +53,5 @@ function onCategoryClick(e) {
     prev.forEach(element => element.removeAttribute('selected'));
     e.target.setAttribute('selected', 'true')
     
-    console.log(e.target.textContent)
     return e.target.textContent
 }
