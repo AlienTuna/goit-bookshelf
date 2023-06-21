@@ -9,7 +9,7 @@ var currentPage = 1;
 function generatePagination() {
   var paginationElement = document.getElementById("pagination");
     
-  if (shoppingList.length === 0) {
+  if (shopList.length === 0) {
     paginationElement.style.display = "none";
     return;
   }
