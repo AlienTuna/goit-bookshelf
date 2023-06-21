@@ -1,0 +1,91 @@
+:root {
+    --accent-light-theme: #4F2EE8;
+    --scroll-light-theme: #E0E0E0;
+    --scroll-firefox-light-theme: #E0E0E0 #00000000;
+
+    --scroll-dark-theme: rgba(17, 17, 17, 0.6);
+    --scroll-firefox-dark-theme: rgba(17, 17, 17, 0.6) #00000000;
+}
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+@media screen and (min-width: 768px) and (max-width: 1439.8px){
+    .side-menu {
+        flex-direction: row;
+    }
+}
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-height: calc(18px * 6 + 30px * 5);
+
+    overflow-y: scroll;
+    scrollbar-color: var(--scroll-firefox-light-theme);
+    scrollbar-width: thin;
+    
+    scrollbar-gutter: stable;
+}
+@media screen and (min-width: 768px) {
+    .categories-list {
+        max-height: calc(18px * 9 + 30px * 9);
+    }
+}
+/* scroll styling for chrome */
+.container-categories-list::-webkit-scrollbar {
+    width: 8px;
+}
+.container-categories-list::-webkit-scrollbar-thumb {
+    background: var(--scroll-light-theme);
+    border-radius: 12px;
+    height: 114px;
+}
+body.dark-theme .container-categories-list::-webkit-scrollbar-thumb {
+    background: rgba(17, 17, 17, 0.6);
+}
+
+
+.categories-list-item {
+    letter-spacing: -0.02em;
+    font-size: 18px;
+    /* line-height: 24px; */
+    padding-right: 30px;
+}
+.categories-list-item:hover,
+.categories-list-item:focus,
+.categories-list-item[selected="true"] {
+    cursor: pointer;
+    color: var(--accent-light-theme);
+}
+
+.categories-list-item[selected="true"] {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.charity-bar {
+    border-radius: 16px;
+    background: radial-gradient(183.6% 183.01% at 59.76% -23.42%,#4f2ee8 18.03%,#fff 100%);
+}
+.charity-bar * {
+    font-size: 18px;
+    color: white;
+    padding: 24px 40px;
+}
+
+ol.charity-list {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+	list-style-type: none;
+	counter-reset: li;
+}
+li.charity-list-item:before {
+    counter-increment: li;
+    content: counter(li, decimal-leading-zero);
+      color: white;
+      margin-right: 16px;
+  }

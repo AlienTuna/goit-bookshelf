@@ -1,80 +1,78 @@
+<header class="header-section">
+    <div class="container page-header-wrapper">
+      <a href="./index.html" class="link logo" style="display: flex;">
+        <img src="./image/logo.svg" alt="logo" />
+        <span class="span">Bookshelf</span>
+        </a>
+      <nav class="page-nav">
+          <ul class="menu-list list">
+          <li class="menu-item">
+            <a class="menu-link current link" href="./index.html">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link link" href="./shopping.html">
+                <span class="shopping-list">SHOPPING LIST</span> 
+                <img src="./image/shop.svg" alt="logo-shop">
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="themes">
+        <!-- <label class="switch" data-start>
+            <input type="checkbox" class="toogle" onchange="toggleTheme()" id="slider">
+            <span class="slider round"></span>
+        </label> -->
+        <label id="switch" class="switch">
+          <input type="checkbox" onchange="toggleTheme()" id="slider">
+          <span class="slider round"></span>
+        </label>
 
-    <link rel="stylesheet" href="./css/header.css">
-    <script src="./js/header.js"></script>
-<body>
-    <header class="header">
-        <div class="header_body">
-                <a href="./index.html" class="logo__link">
-                  <!-- Поменять SCR лого -->
-                    <img src="./image/logo.svg" alt="logo" />
-                    <span class="span">Bookshelf</span>
-                </a>
-                <nav class="page-nav">
-                    <ul class="menu-list list">
-                        <li class="menu-item">
-                            <!-- Поменять ссылку на начальную страничку -->
-                            <a href="./index.html">Home</a>
-                        </li>
-                        <li class="menu-item">
-                            <!-- Поменять ссылку на сайт с покупками -->
-                            <a href="./partials/shopping-list/shopping-list.html">
-                                <span class="shopping-list">Shopping list</span> 
-                                <!-- Поменять SCR лого -->
-                                <img src="./image/shop.svg" alt="logo-shop">
-                            </a>
-                        </li>
-                  </ul>
-                <div>
-                    <label class="switch" data-start>
-                        <input type="checkbox" class="toogle" onchange="changeTheme(this.checked)">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div>
-                    <p>Wellcome!</p>
-                </div>
-              
-            <!-- КНОПКА -->
-            <button  type="button" class="mobile-menu-open-btn" data-menu-open>
-                <svg class="mobile-menu-icon" width="32" height="22">
-                  <use href="./image/open-menu-btn.svg"></use>           
-                </svg>
-            </button>
         
-        </div>
-
-
-            <!-- МЕНЮ КНОПКИ -->
-            <div class="mobile-menu-container-wrapper" data-menu>
-                <div class="mobile-menu-container">
-              <button type="button" class="mobile-menu-close-btn" data-menu-close>
-                <svg class="mobile-menu-close-icon" width="8" height="8">
-                  <use href="./image/close-btn.svg"></use>
-                </svg>
-              </button>
-          <nav>
-            <ul class="mobile-menu-list-link list">
-                <li class="menu-item">
-                    <!-- Поменять ссылку на начальную страничку -->
-                    <a href="./index.html">Home</a>
-                </li>
-                <li class="menu-item">
-                    <!-- Поменять ссылку на сайт с покупками -->
-                    <a href="./partials/shopping-list/shopping-list.html">
-                        <span class="shopping-list">Shopping list</span> 
-                        <!-- Поменять SCR лого -->
-                        <img src="./image/shop.svg" alt="logo-shop">
-                    </a>
-                </li>
-            </ul>
-          </nav>
-          <div>
-            <p>Wellcome!</p>
-        </div>
-
     </div>
-    </header>
-</body>
-</html>
+      
+      <div class="wellcome-div">
+          <p>Wellcome!</p>
+          </div>
+      
+
+<!-- MOBILE MENU BUTTON OPEN -->
+
+        <button  type="button" class="mobile-menu-open-btn" data-menu-open>
+            <svg class="mobile-menu-icon" width="32" height="22">
+                <use href="./image/logo.svg"></use>           
+            </svg>
+          </button>
+  </div>
+      
+<!-- MOBILE MENU WINDOW -->
+
+  <div class="mobile-menu-container-wrapper" data-menu>
+    <div class="mobile-menu-container">
+  <button type="button" class="mobile-menu-close-btn" data-menu-close>
+    <svg class="mobile-menu-close-icon" width="8" height="8">
+      <use href="./image/close-btn.svg"></use>
+    </svg>
+  </button>
+<nav>
+<ul class="mobile-menu-list-link list">
+    <li class="btn-menu-item">
+        <a class="menu-link current link" href="./index.html">HOME</a>
+      </li>
+      <li class="btn-menu-item">
+        <a class="menu-link link" href="./partials/shopping-list/shopping-list.html">
+            <span class="shopping-list">SHOPPING LIST</span> 
+            <img src="./image/shop.svg" alt="logo-shop">
+        </a>
+      </li>
+</ul>
+</nav>
+<div>
+    <p>Wellcome!</p>
+    </div>
+</div>
+  </div>
+</header>
 
 
+<script src="./js/header.js"></script>

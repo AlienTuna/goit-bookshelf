@@ -1,42 +1,71 @@
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./main-page.css');
+@import url('./category-list.css');
 @import url('./shopping-list.css');
+@import url('./side-menu.css');
+@import url('./scroll-up.css');
+
+
 
 li {
   list-style: none;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    line-height: 1.33;
-    font-weight: 400;
-  
-    color: #121212;
-    background-color: #F7F7F7;
-  }
-  
-  /* 375px <= phone screen <= infinity */
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.33;
+  font-weight: 400;
+
+  color: #121212;
+  background-color: #f7f7f7;
+}
+
+/* 375px <= phone screen <= infinity */
+.container {
+  position: relative;
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 768px <= tablet screen <= infinity */
+@media screen and (min-width: 768px) {
   .container {
-    max-width: 375px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
+}
+/* 1440px <= desktop screen <= infinity */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+      padding-left: 24px;
+      padding-right: 24px;
+  }}
+
+
+
   
-  /* 768px <= tablet screen <= infinity */
-  @media screen and (min-width: 768px) {
-    .container {
-      max-width: 768px;
-      padding-left: 32px;
-      padding-right: 32px;
-    }
+.body-wrapper {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+@media screen and (max-width: 1439.8px) {
+  .body-wrapper {
+    flex-direction: column;
   }
-  /* 1440px <= desktop screen <= infinity */
+}
+
   @media screen and (min-width: 1440px) {
-    .container {
-      max-width: 1440px;
-    }
+    .main-content {
+    width: 996px;
+  }
   }
