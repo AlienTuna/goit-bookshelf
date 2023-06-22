@@ -1,4 +1,4 @@
-import charityList from "./charity-list";
+import charityList from "/src/js/aside-menu/charity-list";
 import { tns } from "tiny-slider";
 
 const charityListEl = document.querySelector('.charity-list');
