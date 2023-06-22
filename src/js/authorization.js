@@ -12,6 +12,9 @@ import { getDatabase, ref, set, child, get, update } from 'firebase/database';
 const modalEl = document.querySelector('.backdrop');
 const openModalEl = document.querySelector('.open-modal');
 const formWrapperEl = document.querySelector('.form-wrapper');
+const displayShopEl = document.querySelector('.display-shop');
+console.dir(displayShopEl);
+displayShopEl.style.display = 'none';
 
 let logOutBtn = null;
 
@@ -32,6 +35,7 @@ const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
 console.log(auth);
+
 const books = [1, 2, 3];
 console.log('qwer');
 function userSignOut() {
@@ -42,6 +46,7 @@ function userSignOut() {
       logOutBtn.remove();
       openModalEl.textContent = 'Sign up';
       openModalEl.disabled = false;
+      displayShopEl.style.display = 'none';
     })
     .catch(error => {
       console.log(error);
@@ -114,6 +119,7 @@ function getData() {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         openModalEl.textContent = snapshot.val().name;
+        displayShopEl.style.display = 'block';
       } else {
         console.log('No data available');
       }
@@ -151,9 +157,9 @@ signInEl.addEventListener('click', signInForm);
 
 function signInForm() {
   const markup = `<form class="login-form">
-  <input type="text" name="email" placeholder="email" />
-  <input type="text" name="password" placeholder="password" />
-  <button type="submit" class="login">Login</button>
+  <input type="text" name="email" placeholder="EMAIL" />
+  <input type="text" name="password" placeholder="PASSWORD" />
+  <button type="submit" class="login">LOGIN</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEll = document.querySelector('.login-form');
@@ -168,10 +174,10 @@ function openModal() {
   }
 
   const markup = `<form class="auth-form">
-  <input type="text" name="name" placeholder="name" />
-  <input type="text" name="email" placeholder="email" />
-  <input type="text" name="password" placeholder="password" />
-  <button type="submit" class="registr">Sign up</button>
+  <input type="text" name="name" placeholder="NAME" />
+  <input type="text" name="email" placeholder="EMAIL" />
+  <input type="text" name="password" placeholder="PASSWORD" />
+  <button type="submit" class="registr">SIGN UP</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEl = document.querySelector('.auth-form');
