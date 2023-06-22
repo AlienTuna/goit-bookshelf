@@ -8,6 +8,13 @@
 // // Функція для генерації пагінації
 // function generatePagination() {
 //   var paginationElement = document.getElementById("pagination");
+    
+  if (shopList.length === 0) {
+    paginationElement.style.display = "none";
+    return;
+  }
+
+  paginationElement.style.display = "block";
 //   paginationElement.innerHTML = "";
 
 //   // Додавання кнопки "<<"
