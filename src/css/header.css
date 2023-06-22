@@ -53,7 +53,7 @@ nav{
 .sign{
   background-color: #4F2EE8;
   color: #fff;
-  font-family: DM Sans;
+  font-family: DM Sans, sans-serif;
   padding: 14px 120px 15px  15px;
   border-radius: 18px;
   margin-left: 5px;
@@ -82,6 +82,9 @@ nav{
     
     .themes{
         margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
 
     .switch input {display:none;}
@@ -162,6 +165,7 @@ nav{
     min-width: 25px;
     height: 25px;
     display: inherit;
+    color: var( --text-secondary-color);
   }
 
   .logo span {
@@ -187,7 +191,7 @@ nav{
       .page-header-wrapper {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          /* justify-content: space-between; */
       }
   
       .mobile-menu-open-btn {
@@ -518,6 +522,58 @@ nav{
 
       }
   }
+
+  @media screen and (max-width: 480px) {
+    .page-header-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        height: 200px;
+        padding: 0 15px;
+    }
+    .themes{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        margin-left: 40px;
+    }
+  }
+
+  .mobile-menu-icon {
+    display: none;
+  }
+  .menu-list.list{
+    display: block;
+    display: flex;
+    margin: 0;
+    gap: 10px;
+}
+
+  @media screen and (max-width: 768px) {
+    .container.page-header-wrapper{
+        display: flex;
+        
+     
+        
+        padding: 0 15px;
+    }
+     
+    .page-nav {
+        margin-left: 20px;
+    }
+    .menu-list.list{
+        display: flex;
+        margin: 0;
+        gap: 10px;
+    }
+    .menu-item:not(:last-child) {
+        margin-right: 0;
+    }
+    .logo-shop{
+        margin-bottom: -5px;
+    }
+}
 
 
 
