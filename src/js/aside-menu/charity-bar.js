@@ -16,7 +16,6 @@ const slider = tns({
   controlsContainer: false,
   rewind: true,
   mouseDrag: true,
-  // items: 8,
   responsive: {
     375: {
       items: 4,
