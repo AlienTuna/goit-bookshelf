@@ -1,10 +1,10 @@
 // import charityList from "/src/js/aside-menu/charity-list";
 // import { tns } from "tiny-slider";
 
-const charityListEl = document.querySelector('.charity-list');
-const downBtn = document.querySelector('.charity-slider-btn');
+// const charityListEl = document.querySelector('.charity-list');
+// const downBtn = document.querySelector('.charity-slider-btn');
 
-renderCharityBar(charityList);
+// renderCharityBar(charityList);
 
 // const slider = tns({
 //   nav: false,
