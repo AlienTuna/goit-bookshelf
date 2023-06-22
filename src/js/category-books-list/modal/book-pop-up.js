@@ -1,7 +1,6 @@
-import amazon from "../../../images/svg/amazon.svg"
-import applebook from "../../../images/svg/applebook.svg"
-import bookshop from "../../../images/svg/bookshop.svg"
-
+import amazon from '../../../images/svg/amazon.svg';
+import applebook from '../../../images/svg/applebook.svg';
+import bookshop from '../../../images/svg/bookshop.svg';
 
 // =====================================================
 const backDrop = document.querySelector('#book-modal');
@@ -12,7 +11,7 @@ const removeNotification = document.querySelector('.removeNotification');
 const addNotification = document.querySelector('.addNotification');
 let modalContent = document.querySelector('.modal__content');
 let idToLocaleStorege = null;
-let arrToLocaleStoreg = []
+let arrToLocaleStoreg = [];
 addBookBtn.addEventListener('click', onAddBookClick);
 closeBtn.addEventListener('click', onBtnCloseClick);
 
@@ -42,8 +41,8 @@ function renderTargetCategory(id) {
 
     `;
 
-    modalContent.innerHTML = ''
-    modalContent.innerHTML = markup
+  modalContent.innerHTML = '';
+  modalContent.innerHTML = markup;
 }
 
 function getCategory(id) {
@@ -54,10 +53,22 @@ function getCategory(id) {
   });
 }
 
-function onBtnCloseClick() {
+function onBtnCloseClick(e) {
+  console.log(e.code)
+  // console.log(e.currentTarget)
+ 
+if(e.code === "Escape"){
+  backDrop.removeEventListener('keydown', onBtnCloseClick);
+  backDrop.classList.add('is-hidden');
+}
+if(e.currentTarget === e.target){
+  backDrop.classList.add('is-hidden');
+}
+if(e.target.classList.contains('modal__close-img')){
   backDrop.classList.add('is-hidden');
 }
 
+}
 
 const bestSellerRef = document.querySelector('.best-sellers');
 const categoriesRef = document.querySelector('.category-books-list');
@@ -66,32 +77,32 @@ bestSellerRef.addEventListener('click', onCardClick);
 categoriesRef.addEventListener('click', onCardClick);
 
 function onCardClick(e) {
+  window.addEventListener('keydown', onBtnCloseClick)
   const card = e.target;
   const el = card.closest('[data-id]');
   const id = el.dataset.id;
-idToLocaleStorege = id
+  idToLocaleStorege = id;
   getCategory(id);
   backDrop.classList.remove('is-hidden');
-
+  backDrop.addEventListener('click', onBtnCloseClick)
+  backDrop.addEventListener('keydown', onBtnCloseClick)
 }
 
 function onAddBookClick(res) {
-  
   notification.classList.toggle('hidden');
   removeNotification.classList.toggle('hidden');
   addNotification.classList.toggle('hidden');
-//    console.log(addNotification.classList.contains('hidden'))
-//  console.log(removeNotification.classList.contains('hidden'))
+  //    console.log(addNotification.classList.contains('hidden'))
+  //  console.log(removeNotification.classList.contains('hidden'))
 
-if(addNotification.classList.contains('hidden')){
-arrToLocaleStoreg.push(idToLocaleStorege)
-// console.log(arrToLocaleStoreg)
-localStorage.setItem('shopping-list', JSON.stringify(arrToLocaleStoreg))
-} 
-if(removeNotification.classList.contains('hidden')) {
-  const arrTofilter = JSON.parse(localStorage.getItem('shopping-list')) 
-  const filtredArr = arrTofilter.filter(id => id !== idToLocaleStorege)
-  localStorage.setItem("shopping-list", JSON.stringify(filtredArr))
-}
-
+  if (addNotification.classList.contains('hidden')) {
+    arrToLocaleStoreg.push(idToLocaleStorege);
+    // console.log(arrToLocaleStoreg)
+    localStorage.setItem('shopping-list', JSON.stringify(arrToLocaleStoreg));
+  }
+  if (removeNotification.classList.contains('hidden')) {
+    const arrTofilter = JSON.parse(localStorage.getItem('shopping-list'));
+    const filtredArr = arrTofilter.filter(id => id !== idToLocaleStorege);
+    localStorage.setItem('shopping-list', JSON.stringify(filtredArr));
+  }
 }
