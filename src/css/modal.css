@@ -13,8 +13,8 @@
   overflow-y: scroll;
 }
 .modal {
-  width: 580px;
-  height: 750px;
+  max-width: 580px;
+  max-height: 750px;
   background-color: rgba(236, 243, 241, 0.911);
   display: flex;
   justify-content: flex-end;

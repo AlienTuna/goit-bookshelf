@@ -30,7 +30,7 @@ function renderTargetCategory(id) {
         <ul class="modal__list">
           <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link">f</a></li>
           <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link">f</a></li>
-          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link">f</a></li>
+          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"></a></li>
         </ul>
       
 </div>
