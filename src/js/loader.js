@@ -59,3 +59,29 @@ function interceptFetchRequests() {
 
 interceptXHRRequests();
 interceptFetchRequests();
+
+
+
+    document.querySelector('.switch').addEventListener('click', function (event) {
+      event.preventDefault();
+      updateLoaderStyle();
+    });
+
+function updateLoaderStyle() {
+  var loaderOverlay = document.getElementById('loader-overlay');
+  if (document.body.classList.contains('dark')) {
+    
+    loaderOverlay.style.backgroundColor = 'rgba(17, 17, 17)';
+    var covers = loaderOverlay.querySelectorAll('.covers span');
+    for (var i = 0; i < covers.length; i++) {
+      covers[i].style.backgroundColor = 'rgba(17, 17, 17)';
+    }
+  } else {
+    loaderOverlay.style.backgroundColor = ''; 
+    loaderOverlay.querySelector('.loader').style.background = ''; 
+    var covers = loaderOverlay.querySelectorAll('.covers span');
+    for (var i = 0; i < covers.length; i++) {
+      covers[i].style.backgroundColor = ''; 
+    }
+  }
+}
