@@ -1,35 +1,19 @@
-/* :root {
+:root {
     --blue: #4F2EE8;  
     --gold: #eac645;
     --dark: #111111;
     --white: #FFFFFF;
     --black: #202024;
-  } */
-  
-  
-  .list {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: #000;
   }
   
-ul,
-ol {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-}
+  
+
  
 /* .menu-item img, .logo{
     height: 25px;
 } */
 
-nav{
-    margin-left: 50px;
-}
+
 
 .wellcome-div{
     margin-right: 30px;
@@ -138,18 +122,19 @@ nav{
   
 
 
-    .header-section {
-      border-bottom: 1px solid var(--footer-header-color);
-      box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-  }
+.page-header-wrapper {
+    border: 1.5px solid var(--text-secondary-color);
+    background-color: var(--body-secondary-color);
+    border-radius: 0 0 8px 8px;
+    /* box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08); */
+}
   
   .logo {
-      font-family: "Raleway", sans-serif;
       font-weight: 800;
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.17;
       letter-spacing: 0.03em;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       color: var(--second-color);
       padding-top: 24px;
       padding-bottom: 24px;
@@ -284,13 +269,14 @@ nav{
           padding: 10px;
       }
 
-      .current {
+      .main-page-header .current,
+      .shopping-page-header .shopping-nav-link {
           position: relative;
           color: var(--logo-button-color);
           z-index: 5;
-          background-color: #eac645;
+          background-color: var(--gold);
           border-radius: 36px;
-          color:#000;
+          color:var(--dark);
       }
 
 
@@ -403,15 +389,12 @@ nav{
           display: flex;
           align-items: center;
       }
-  
-      .menu-item:not(:last-child) {
-          margin-right: 40px;
-      }
+
   
       .menu-link {
           font-family: 'DM Sans';
           font-weight: 500;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 1.5;
           letter-spacing: 0.02em;
           color: var(--second-color);
@@ -421,13 +404,15 @@ nav{
           transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
       }
   
-       .current {
+      .main-page-header .current,
+      .shopping-page-header .shopping-nav-link {
           position: relative;
-          color: var(--logo-button-color);
+          /* color: var(--logo-button-color); */
           z-index: 5;
-          background-color: #eac645;
+          background-color: var(--gold);
           border-radius: 36px;
-
+        padding: 8px 16px ;
+        color: var(--dark);
       }
   
       /* .current::after {
@@ -447,7 +432,7 @@ nav{
   }
   
   
-  @media screen and (min-width: 768px) and (max-width: 1500px) {
+  @media screen and (min-width: 768px) and (max-width: 1439.8px) {
       .page-header-wrapper {
           display: flex;
           align-items: center;
@@ -465,7 +450,7 @@ nav{
   
   /* ++++++HEADER-DESKTOP++++++ */
   
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 1440px) {
     
     .page-header-wrapper {
               display: flex;
@@ -474,7 +459,6 @@ nav{
   
   
       .logo {
-          padding-bottom: 28px;
           margin-right: 76px;
       }
   
@@ -482,11 +466,7 @@ nav{
           margin-left: 100px;
           margin-right: 200px;
       }
-  
-      .menu-link {
-          padding-bottom: 5px;
-          
-      }
+
   
       .contact-list {
           display: flex;
@@ -513,12 +493,14 @@ nav{
         margin-left: 30px;
       }
 
-      .current {
+      .main-page-header .current,
+      .shopping-page-header .shopping-nav-link {
           position: relative;
           color: var(--logo-button-color);
           z-index: 5;
-          background-color: #eac645;
+          background-color: var(--gold);
           border-radius: 36px;
+          color: var(--dark);
 
       }
   }
@@ -547,10 +529,10 @@ nav{
     display: block;
     display: flex;
     margin: 0;
-    gap: 10px;
+    gap: 24px;
 }
 
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     .container.page-header-wrapper{
         display: flex;
         
@@ -573,11 +555,32 @@ nav{
     .logo-shop{
         margin-bottom: -5px;
     }
+} */
+
+
+.shopping-nav-link > .logo-shop {
+    fill: var(--text-secondary-color);
 }
-
-
-
-
+.shopping-page-header .shopping-nav-link > .logo-shop {
+    fill: var(--dark);
+}
+.shopping-nav-link {
+    display: flex;
+    align-items: center;
+}
+.header-section {
+    height: 64px;
+}
+@media screen and (min-width: 768px) {
+    .header-section {
+        height: 72px;
+    }
+}
+@media screen and (max-width: 767.8px) {
+    nav.page-nav.display-shop {
+        display: none;
+    }
+}
 
 
 
