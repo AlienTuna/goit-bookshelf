@@ -92,10 +92,12 @@ function onCardClick(e) {
   window.addEventListener('keydown', onBtnCloseClick)
   backDrop.addEventListener('click', onBtnCloseClick)
   backDrop.addEventListener('keydown', onBtnCloseClick)
-if(!JSON.parse(localStorage.getItem('shopping-list')).includes(id)){
-  addNotification.classList.remove('hidden')
-  removeNotification.classList.add('hidden')
-}
+
+//   if(!JSON.parse(localStorage.getItem('shopping-list')).includes(id)){
+//   addNotification.classList.remove('hidden')
+//   removeNotification.classList.add('hidden')
+// }
+
   
   if(card.classList.contains('books-btn')){
     return
