@@ -1,3 +1,4 @@
+import { Loading } from 'notiflix';
 
 const shopList = document.querySelector('.js-shop-list'); //list on link where adding books images
 const shopBgd = document.querySelector('.js-shop-background'); //link div with base img

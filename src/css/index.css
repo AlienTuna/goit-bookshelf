@@ -6,14 +6,42 @@
 @import url('./side-menu.css');
 @import url('./scroll-up.css');
 @import url('./modal.css');
+@import url('./loader.css');
 
 :root {
-  background: #d0d0d0;
+  /* background основного тела */
+  --body-background-color: #F6F6F6;
+  /* background header и footer  */
+  --body-secondary-color: #FFFFFF;
+  /* текст категорий */
+  --text-color: rgba(17, 17, 17, 0.6);
+  /* карточка-название книги, кнопка see more, шопинглист в header, шопинглист-описание карточки, слово Shopping в шопинглист */
+  --text-secondary-color: #111111;
+  /* категории-ховер(фокус) */
+  --text-fourth-color: #4F2EE8;
+  
+  /* ul-карточек и автор */
+  /* --text-third-color: #B4AFAF;   */
+  
+  /* bookshelf-лого */
+  --logo-color: #000000;
+    /* scroll bar for aside-menu */
+  --scroll-bar: #E0E0E0;
 }
 
 :root body.dark {
-  background: #111111;
+  --body-background-color: #202024; 
+  --body-secondary-color: #111111;  
+  --text-color: rgba(255, 255, 255, 0.6);  
+  --text-secondary-color: #FFFFFF;  
+  /* --text-third-color: #B4AFAF;  */
+  --text-fourth-color: #EAC645;
+  --logo-color: #F3F3F3;  
+
+  /* scroll bar for aside-menu */
+  --scroll-bar: rgba(17, 17, 17, 0.6);
 }
+
 
 li {
   list-style: none;
@@ -27,8 +55,10 @@ body {
   line-height: 1.33;
   font-weight: 400;
 
-  color: #121212;
-  background-color: #f7f7f7;
+  color: var(--text-secondary-color);
+  background-color: var(--body-background-color);
+
+  transition:  0.5s;
 }
 
 /* 375px <= phone screen <= infinity */
@@ -72,5 +102,5 @@ body {
 @media screen and (min-width: 1440px) {
   .main-content {
     width: 996px;
-  }
+}
 }

@@ -1,11 +1,5 @@
 :root {
-    --accent-light-theme: #4F2EE8;
-    
-    --scroll-light-theme: #E0E0E0;
-    --scroll-firefox-light-theme: #E0E0E0 #00000000;
-
-    --scroll-dark-theme: rgba(17, 17, 17, 0.6);
-    --scroll-firefox-dark-theme: rgba(17, 17, 17, 0.6) #00000000;
+    --charity-bar-blue: #4F2EE8;
     --charity-bar-txt-clr: #fff;
 }
 .side-menu {
@@ -18,35 +12,43 @@
         flex-direction: row;
     }
 }
+@media screen and (min-width: 1440px) {
+    .side-menu {
+        gap: 86px;
+    }
+}
+.categories-menu {
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+/* scroll styling for firefox */
+    scrollbar-color: var(--scroll-bar) transparent;
+    scrollbar-width: thin;
+
+    scrollbar-gutter: stable;
+}
 .categories-list {
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     gap: 32px;
     max-height: calc(18px * 6 + 30px * 5);
-
-    overflow-y: scroll;
-    scrollbar-color: var(--scroll-firefox-light-theme);
-    scrollbar-width: thin;
     
-    scrollbar-gutter: stable;
 }
-@media screen and (min-width: 768px) {
-    .categories-list {
-        max-height: calc(18px * 9 + 30px * 9);
-    }
-}
+
 /* scroll styling for chrome */
-.container-categories-list::-webkit-scrollbar {
-    width: 8px;
-}
-.container-categories-list::-webkit-scrollbar-thumb {
-    background: var(--scroll-light-theme);
+.categories-menu::-webkit-scrollbar {
+    width: 8px;               /* ширина всей полосы прокрутки */
+  }
+  .categories-menu::-webkit-scrollbar-track {
     border-radius: 12px;
-    height: 114px;
-}
-body.dark-theme .container-categories-list::-webkit-scrollbar-thumb {
-    background: rgba(17, 17, 17, 0.6);
-}
+    background: transparent;        /* цвет зоны отслеживания */
+  }
+  .categories-menu::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar);    /* цвет бегунка */
+     border-radius: 12px;       /*округлось бегунка */
+    border: none;  /* отступ вокруг бегунка */
+  }
 
 
 .categories-list-item {
@@ -54,12 +56,14 @@ body.dark-theme .container-categories-list::-webkit-scrollbar-thumb {
     font-size: 18px;
     /* line-height: 24px; */
     padding-right: 30px;
+    line-height: 24px;
+    white-space: nowrap;
 }
 .categories-list-item:hover,
 .categories-list-item:focus,
 .categories-list-item[selected="true"] {
     cursor: pointer;
-    color: var(--accent-light-theme);
+    color: var(--text-fourth-color);
 }
 
 .categories-list-item[selected="true"] {
@@ -90,6 +94,7 @@ ol.charity-list {
 li.charity-list-item {
     display: flex;
     align-items: center;
+    height: 32px;
 }
 li.charity-list-item:before {
     counter-increment: li;
@@ -107,7 +112,10 @@ li.charity-list-item:before {
     display: flex;
     margin: 0 0 40px 0;
 }
-.charity-bar-header>img {
+.charity-bar-header::after {
+    content: url(/src/images/charity-fonds/Ukraine.svg);
+    width: 20px;
+    height: 20px;
     margin-left: 12px;
 }
 .charity-fond-img {
@@ -129,6 +137,7 @@ filter: brightness(0)invert();
     .charity-slider-btn {
         width: 38px;
         height: 38px;
+        /* margin-top: 40px; */
     }
 }
 
@@ -136,33 +145,70 @@ filter: brightness(0)invert();
     position: relative;
     padding: 5px;
     margin: 30px auto;
-    background: var(--accent-light-theme);
-    height: 50px;
-    width: 50px;
+    background: var(--charity-bar-txt-clr);
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
     transition: all 0.2s linear;
-    border: none
-  }
-/* .down-btn {
-    background: #4F2EE8;
-    transform: matrix(0, -1, -1, 0, 0, 0);
-} */
+    border: none;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+    .charity-slider-btn {
+        margin-top: 32px;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .charity-slider-btn {
+        margin-top: 40px;
+    }
+}
 .charity-slider-btn:hover {
-    transform: translate3d(0, 10px, 0);
-  }
-  .charity-slider-btn::after {
-    content: "";
-    position: absolute;
-    left: 17px;
-    z-index: 11;
-    display: block;
-    width: 25px;
-    height: 25px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    /* border-radius: 4; */
-    transform: matrix(0, -1, -1, 0, 0, 0);
+    transform: translate3d(0, 3px, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.274);
+}
+.charity-slider-btn::after {
+    content: url('/src/images/charity-fonds/down-btn.svg');
+    fill: var(--charity-bar-blue);
+}
+#tns1-mw {
+    overflow: hidden;
+}
+.tns-visually-hidden {
+    display: none;
+}
 
-    top: 10px;
-    transform: rotate(225deg);
-  }
+/* side menu heights */
+.charity-items-wrapper {
+    overflow: hidden;
+}
+@media screen and (max-width: 767.8px) {
+    .charity-items-wrapper {
+        height: 188px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .charity-items-wrapper {
+        height: 292px;
+    }
+    .categories-menu {
+        height: 472px;
+    }
+    .charity-bar {
+        height: 472px;
+    }
+}
+@media screen and (max-width: 1439.8px) {
+    .shopping-aside {
+        display: none;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .charity-bar {
+        height: 490px;
+    }
+}
+
+
