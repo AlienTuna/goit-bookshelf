@@ -1,79 +1,145 @@
 import { Loading } from 'notiflix';
-
 const shopList = document.querySelector('.js-shop-list'); //list on link where adding books images
 const shopBgd = document.querySelector('.js-shop-background'); //link div with base img
+let data = JSON.parse(localStorage.getItem('shopping-list')); // get from localStorage
 
-shopList.addEventListener('click', onBtnTrashClick);
+let cardRef = null;
 
-let data = JSON.parse(localStorage.getItem('storage-data')); // get from localStorage
+if (data.length !== 0) {
+  renderBookCard(data); // calling function render card
+  shopBgd.classList.add('hidden')
+  shopList.addEventListener('click', onBtnTrashClick);
+}
 
-renderBookCard(data); // calling function render card 
+
+
+
+
+
+function fetchFromLocalStorage(id) {
+  return fetch(`https://books-backend.p.goit.global/books/${id}`).then(book =>
+    book.json()
+  );
+}
+
+
+
+
 
 // function render card this books from the local storage
 
 function renderBookCard(array) {
-  if (!array || array.length === 0) {
+  if (array.length === 0) {
     // if the local storage is empty then get out from function
     return;
   }
-  if (shopBgd) {
-    shopBgd.setAttribute('hidden', ''); //adding to base img atribute hidden 
-  }
+  // if (shopBgd) {
+  //   shopBgd.setAttribute('hidden', ''); //adding to base img atribute hidden
+  // }
 
-  if (shopList) {
-    const markup = array
-      .map(el => {
-        return ` <li id=${el.id} class="shop-item-book">
-      <img class="shop-book-img" alt="Wrapper of book" src="${el.book_image}" />
-            <div class="shop-info-book">
-              <h2 class="shop-secondary-title">${el.title}</h2>
-              <p class="shop-category">${el.list_name}</p>
-              <p class="shop-desc">${el.description}</p>
-              <div class="shop-author-wrapper">
-                <p class="shop-author">${el.author}</p>
-                <ul class="shop-platform-list">
-                  <li>
-                    <a href="${el.marketAmazon}" class="shop-link-amazon" noopener noreferrer>
-                                         </a>
-                  </li>
-                  <li>
+  // if (shopList) {
+  const markup = array.map(id => {fetchFromLocalStorage(id).then(res => {
+    const card = `<li data-id=${res._id} class="shop-item-book">
+    <img class="shop-book-img" alt="Wrapper of book" src="${res.book_image}" />
+          <div class="shop-info-book">
+            <h2 class="shop-secondary-title">${res.title}</h2>
+            <p class="shop-category">${res.list_name}</p>
+            <p class="shop-desc">${res.description}</p>
+            <div class="shop-author-wrapper">
+              <p class="shop-author">${res.author}</p>
+              <ul class="shop-platform-list">
+                <li>
+                  <a href="${res.buy_links[0].url}" class="shop-link-amazon" noopener noreferrer>
+                                       </a>
+                </li>
+                <li>
 
-                    <a href="${el.marketAppleBooks}" class="shop-link-applebook" noopener noreferrer>
-                      </a>
+                  <a href="${res.buy_links[1].url}" class="shop-link-applebook" noopener noreferrer>
+                    </a>
 
-                  </li>
-                  <li>
-                    <a href="${el.marketBookshop}" class="shop-link-bookshop">
-                      </a>
-                   
-                  </li>
-                </ul>
-              </div>
+                </li>
+                <li>
+                  <a href="${res.buy_links[4].url}" class="shop-link-bookshop">
+                    </a>
+                 
+                </li>
+              </ul>
             </div>
-             <button type="button" class="shop-delete-btn js-delete-btn">
-                    </button>
-          </li>`;
-      })
-      .join('');
+          </div>
+           <button type="button" class="shop-delete-btn js-delete-btn">
+                  </button>
+        </li>`;
+        shopList.insertAdjacentHTML('beforeend', card);
+        cardRef = document.querySelector(`.shop-item-book`)
+        console.log(cardRef);
+        return card;
+  })}  
+  ).join('');
 
-    return shopList.insertAdjacentHTML('beforeend', markup);
-  }
+  
+
+  // .map(el => {
+  //   return ` <li id=${el.id} class="shop-item-book">
+  // <img class="shop-book-img" alt="Wrapper of book" src="${el.book_image}" />
+  //       <div class="shop-info-book">
+  //         <h2 class="shop-secondary-title">${el.title}</h2>
+  //         <p class="shop-category">${el.list_name}</p>
+  //         <p class="shop-desc">${el.description}</p>
+  //         <div class="shop-author-wrapper">
+  //           <p class="shop-author">${el.author}</p>
+  //           <ul class="shop-platform-list">
+  //             <li>
+  //               <a href="${el.marketAmazon}" class="shop-link-amazon" noopener noreferrer>
+  //                                    </a>
+  //             </li>
+  //             <li>
+
+  //               <a href="${el.marketAppleBooks}" class="shop-link-applebook" noopener noreferrer>
+  //                 </a>
+
+  //             </li>
+  //             <li>
+  //               <a href="${el.marketBookshop}" class="shop-link-bookshop">
+  //                 </a>
+
+  //             </li>
+  //           </ul>
+  //         </div>
+  //       </div>
+  //        <button type="button" class="shop-delete-btn js-delete-btn">
+  //               </button>
+  //     </li>`;
+  // })
+  // .join('');
+
+  return shopList.insertAdjacentHTML('beforeend', markup);
 }
+// }
 
 function onBtnTrashClick(evt) {
-  if (evt.target.nodeName === 'BUTTON') {
-    const id = evt.target.parentNode.getAttribute('id');
+const element = evt.target.closest('[data-id]');
+const id = element.dataset.id
+
+// id.classList.add('hidden')
+
+  if (evt.target.classList.contains('shop-delete-btn')) {
+    // const id = evt.target.parentNode.getAttribute('id');
     removeBookFromLocalStorage(id);
+
+    cardRef.classList.add('hidden')
   }
 }
 
 function removeBookFromLocalStorage(bookId) {
-  const data = JSON.parse(localStorage.getItem('storage-data'));
-  const newData = data.filter(({ id }) => id !== bookId);
-  localStorage.setItem('storage-data', JSON.stringify(newData));
-  shopList.innerHTML = '';
-  renderBookCard(newData);
-  if (!newData || newData.length === 0) {
-    shopBgd.removeAttribute('hidden', '');
-  }
+  const data = JSON.parse(localStorage.getItem('shopping-list'));
+  console.log(bookId);
+  // const newData = data.filter(( id ) => id !== bookId);
+
+  // localStorage.setItem('shopping-list', JSON.stringify(newData));
+  // const filtredCard = JSON.parse(localStorage.getItem('shopping-list'))
+  // shopList.innerHTML = '';
+  // renderBookCard(filtredCard);
+  // if (newData.length === 0) {
+  //   shopBgd.classList.remove('hidden');
+  // }
 }

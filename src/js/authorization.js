@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
@@ -11,6 +12,9 @@ import { getDatabase, ref, set, child, get, update } from 'firebase/database';
 const modalEl = document.querySelector('.backdrop');
 const openModalEl = document.querySelector('.open-modal');
 const formWrapperEl = document.querySelector('.form-wrapper');
+const displayShopEl = document.querySelector('.display-shop');
+// console.dir(displayShopEl);
+displayShopEl.style.display = 'none';
 
 let logOutBtn = null;
 
@@ -30,33 +34,38 @@ const analytics = getAnalytics(app);
 // formEl.addEventListener('submit', registerUser);
 
 const auth = getAuth(app);
-const books = [1, 2, 3];
+// console.log(auth);
 
+const books = [1, 2, 3];
+// console.log('qwer');
 function userSignOut() {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      console.log('Sign-out successful.');
+      // console.log('Sign-out successful.');
       logOutBtn.remove();
       openModalEl.textContent = 'Sign up';
+      openModalEl.disabled = false;
+      displayShopEl.style.display = 'none';
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
 function registerUser(evt) {
   evt.preventDefault();
-  console.dir(evt.currentTarget);
+  // console.dir(evt.currentTarget);
   const { name, email, password } = evt.currentTarget.elements;
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
+      // console.log(user);
       addUser(name.value);
       modalEl.classList.add('is-hidden');
       // ...
+      getData();
     })
     .catch(error => {
       const errorCode = error.code;
@@ -69,7 +78,7 @@ function registerUser(evt) {
 
 async function loginUser(evt) {
   evt.preventDefault();
-  console.dir(evt.currentTarget);
+  // console.dir(evt.currentTarget);
   const { email, password } = evt.currentTarget.elements;
 
   await signInWithEmailAndPassword(auth, email.value, password.value)
@@ -77,8 +86,8 @@ async function loginUser(evt) {
       // Signed in
 
       const user = userCredential.user;
-      console.log(user);
-      const userName = getData();
+      // console.log(auth);
+      getData();
       // ...
       modalEl.classList.add('is-hidden');
 
@@ -95,7 +104,7 @@ async function loginUser(evt) {
 // dataEl.addEventListener('click', addData);
 
 function addData() {
-  console.log(addData);
+  // console.log(addData);
   const db = getDatabase();
 
   update(ref(db, 'users/' + auth.currentUser.uid), {
@@ -108,19 +117,20 @@ function getData() {
   get(child(dbRef, `users/${auth.currentUser.uid}`))
     .then(snapshot => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         openModalEl.textContent = snapshot.val().name;
+        displayShopEl.style.display = 'block';
       } else {
-        console.log('No data available');
+        // console.log('No data available');
       }
     })
     .catch(error => {
-      console.error(error);
+      // console.error(error);
     });
 }
 
 function addUser(name) {
-  console.log(addData);
+  // console.log(addData);
   const db = getDatabase();
 
   set(ref(db, 'users/' + auth.currentUser.uid), {
@@ -147,9 +157,9 @@ signInEl.addEventListener('click', signInForm);
 
 function signInForm() {
   const markup = `<form class="login-form">
-    <input type="text" name="email" placeholder="email" />
-    <input type="text" name="password" placeholder="password" />
-    <button type="submit" class="login">Login</button>
+  <input type="text" name="email" placeholder="EMAIL" />
+  <input type="text" name="password" placeholder="PASSWORD" />
+  <button type="submit" class="login">LOGIN</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEll = document.querySelector('.login-form');
@@ -159,13 +169,15 @@ function signInForm() {
 function openModal() {
   if (openModalEl.textContent !== 'Sign up') {
     createMarkup();
+    openModalEl.disabled = true;
     return;
   }
+
   const markup = `<form class="auth-form">
-    <input type="text" name="name" placeholder="name" />
-    <input type="text" name="email" placeholder="email" />
-    <input type="text" name="password" placeholder="password" />
-    <button type="submit" class="registr">Sign up</button>
+  <input type="text" name="name" placeholder="NAME" />
+  <input type="text" name="email" placeholder="EMAIL" />
+  <input type="text" name="password" placeholder="PASSWORD" />
+  <button type="submit" class="registr">SIGN UP</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEl = document.querySelector('.auth-form');
@@ -173,9 +185,8 @@ function openModal() {
   modalEl.classList.remove('is-hidden');
   formEl.addEventListener('submit', registerUser);
 
-  console.log('openModal');
+  // console.log('openModal');
 }
-openModal();
 
 function createMarkup() {
   const markup = `<button class="log-out">Log out</button>`;
@@ -184,3 +195,23 @@ function createMarkup() {
   logOutBtn = document.querySelector('.log-out');
   logOutBtn.addEventListener('click', userSignOut);
 }
+
+// console.dir(openModalEl);
+
+function chekAuth() {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      // console.log(user);
+      getData();
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+}
+
+chekAuth();
