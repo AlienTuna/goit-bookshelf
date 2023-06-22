@@ -1,3 +1,8 @@
+import amazon from "../../../images/svg/amazon.svg"
+import applebook from "../../../images/svg/applebook.svg"
+import bookshop from "../../../images/svg/bookshop.svg"
+
+
 // =====================================================
 const backDrop = document.querySelector('#book-modal');
 const closeBtn = document.querySelector('.modal__close-btn');
@@ -28,9 +33,9 @@ function renderTargetCategory(id) {
         <p class="modal__author">${id.author}</p>
         <p class="modal__book-desc">${id.description}</p>
         <ul class="modal__list">
-          <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link"><img src="/src/images/svg/amazon.svg"></a></li>
-          <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link"><img src="src/images/svg/applebook.svg"></a></li>
-          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"><img src="src/images/svg/bookshop.svg"></a></li>
+          <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link"><img src=""><img src="${amazon}" alt=""></a></li>
+          <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link"><img src="${applebook}" alt=""></a></li>
+          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"><img src="${bookshop}" alt=""></a></li>
         </ul>
       
 </div>
