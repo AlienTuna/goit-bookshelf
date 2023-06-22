@@ -9,7 +9,7 @@
 // function generatePagination() {
 //   var paginationElement = document.getElementById("pagination");
     
-  if (shopList.length === 0) {
+  if (shoppingList.length === 0) {
     paginationElement.style.display = "none";
     return;
   }
