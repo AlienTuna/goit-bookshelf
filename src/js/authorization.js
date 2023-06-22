@@ -39,6 +39,7 @@ function userSignOut() {
       console.log('Sign-out successful.');
       logOutBtn.remove();
       openModalEl.textContent = 'Sign up';
+      openModalEl.disabled = false;
     })
     .catch(error => {
       console.log(error);
@@ -159,8 +160,10 @@ function signInForm() {
 function openModal() {
   if (openModalEl.textContent !== 'Sign up') {
     createMarkup();
+    openModalEl.disabled = true;
     return;
   }
+
   const markup = `<form class="auth-form">
     <input type="text" name="name" placeholder="name" />
     <input type="text" name="email" placeholder="email" />
@@ -184,3 +187,5 @@ function createMarkup() {
   logOutBtn = document.querySelector('.log-out');
   logOutBtn.addEventListener('click', userSignOut);
 }
+
+console.dir(openModalEl);
