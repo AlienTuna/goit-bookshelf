@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
@@ -30,8 +31,9 @@ const analytics = getAnalytics(app);
 // formEl.addEventListener('submit', registerUser);
 
 const auth = getAuth(app);
+console.log(auth);
 const books = [1, 2, 3];
-
+console.log('qwer');
 function userSignOut() {
   signOut(auth)
     .then(() => {
@@ -58,6 +60,7 @@ function registerUser(evt) {
       addUser(name.value);
       modalEl.classList.add('is-hidden');
       // ...
+      getData();
     })
     .catch(error => {
       const errorCode = error.code;
@@ -78,8 +81,8 @@ async function loginUser(evt) {
       // Signed in
 
       const user = userCredential.user;
-      console.log(user);
-      const userName = getData();
+      console.log(auth);
+      getData();
       // ...
       modalEl.classList.add('is-hidden');
 
@@ -148,9 +151,9 @@ signInEl.addEventListener('click', signInForm);
 
 function signInForm() {
   const markup = `<form class="login-form">
-    <input type="text" name="email" placeholder="email" />
-    <input type="text" name="password" placeholder="password" />
-    <button type="submit" class="login">Login</button>
+  <input type="text" name="email" placeholder="email" />
+  <input type="text" name="password" placeholder="password" />
+  <button type="submit" class="login">Login</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEll = document.querySelector('.login-form');
@@ -165,10 +168,10 @@ function openModal() {
   }
 
   const markup = `<form class="auth-form">
-    <input type="text" name="name" placeholder="name" />
-    <input type="text" name="email" placeholder="email" />
-    <input type="text" name="password" placeholder="password" />
-    <button type="submit" class="registr">Sign up</button>
+  <input type="text" name="name" placeholder="name" />
+  <input type="text" name="email" placeholder="email" />
+  <input type="text" name="password" placeholder="password" />
+  <button type="submit" class="registr">Sign up</button>
   </form>`;
   formWrapperEl.innerHTML = markup;
   const formEl = document.querySelector('.auth-form');
@@ -178,7 +181,6 @@ function openModal() {
 
   console.log('openModal');
 }
-openModal();
 
 function createMarkup() {
   const markup = `<button class="log-out">Log out</button>`;
@@ -189,3 +191,21 @@ function createMarkup() {
 }
 
 console.dir(openModalEl);
+
+function chekAuth() {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      console.log(user);
+      getData();
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+}
+
+chekAuth();
