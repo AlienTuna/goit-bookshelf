@@ -71,7 +71,7 @@ export function onSeeMoreBtn(e) {
 export function onBookClick(e) {
   e.preventDefault();
   const bookId = e.currentTarget.dataset.id;
-  console.log(bookId);
+  // console.log(bookId);
 }
 
 //Рендер книжок що належать до однієї категорії
