@@ -34,9 +34,10 @@
   font-size: 32px;
   line-height: calc(38 / 32);
   letter-spacing: -0.04em;
-  color: #111111;
+  color: var( --text-secondary-color);
   margin-top: 0;
   margin-bottom: 40px;
+  
 }
 
 @media screen and (min-width: 768px) {
