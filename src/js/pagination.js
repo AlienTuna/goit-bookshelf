@@ -9,12 +9,12 @@
 // function generatePagination() {
 //   var paginationElement = document.getElementById("pagination");
     
-  if (shoppingList.length === 0) {
-    paginationElement.style.display = "none";
-    return;
-  }
+  // if (shoppingList.length === 0) {
+  //   paginationElement.style.display = "none";
+  //   return;
+  // }
 
-  paginationElement.style.display = "block";
+  // paginationElement.style.display = "block";
 //   paginationElement.innerHTML = "";
 
 //   // Додавання кнопки "<<"
