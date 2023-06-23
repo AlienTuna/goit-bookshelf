@@ -7,13 +7,9 @@ let cardRef = null;
 
 if (data.length !== 0) {
   renderBookCard(data); // calling function render card
-  shopBgd.classList.add('hidden')
-  shopList.addEventListener('click', onBtnTrashClick);
+  shopBgd.classList.add('hidden');
+  
 }
-
-
-
-
 
 
 function fetchFromLocalStorage(id) {
@@ -21,10 +17,6 @@ function fetchFromLocalStorage(id) {
     book.json()
   );
 }
-
-
-
-
 
 // function render card this books from the local storage
 
@@ -38,8 +30,10 @@ function renderBookCard(array) {
   // }
 
   // if (shopList) {
-  const markup = array.map(id => {fetchFromLocalStorage(id).then(res => {
-    const card = `<li data-id=${res._id} class="shop-item-book">
+  const markup = array
+    .map(id => {
+      fetchFromLocalStorage(id).then(res => {
+        const card = `<li data-id=${res._id} class="shop-item-book">
     <img class="shop-book-img" alt="Wrapper of book" src="${res.book_image}" />
           <div class="shop-info-book">
             <h2 class="shop-secondary-title">${res.title}</h2>
@@ -70,76 +64,39 @@ function renderBookCard(array) {
                   </button>
         </li>`;
         shopList.insertAdjacentHTML('beforeend', card);
-        cardRef = document.querySelector(`.shop-item-book`)
-        console.log(cardRef);
+        cardRef = document.querySelector(`.shop-item-book`);
+        // console.log(cardRef);
         return card;
-  })}  
-  ).join('');
-
-  
-
-  // .map(el => {
-  //   return ` <li id=${el.id} class="shop-item-book">
-  // <img class="shop-book-img" alt="Wrapper of book" src="${el.book_image}" />
-  //       <div class="shop-info-book">
-  //         <h2 class="shop-secondary-title">${el.title}</h2>
-  //         <p class="shop-category">${el.list_name}</p>
-  //         <p class="shop-desc">${el.description}</p>
-  //         <div class="shop-author-wrapper">
-  //           <p class="shop-author">${el.author}</p>
-  //           <ul class="shop-platform-list">
-  //             <li>
-  //               <a href="${el.marketAmazon}" class="shop-link-amazon" noopener noreferrer>
-  //                                    </a>
-  //             </li>
-  //             <li>
-
-  //               <a href="${el.marketAppleBooks}" class="shop-link-applebook" noopener noreferrer>
-  //                 </a>
-
-  //             </li>
-  //             <li>
-  //               <a href="${el.marketBookshop}" class="shop-link-bookshop">
-  //                 </a>
-
-  //             </li>
-  //           </ul>
-  //         </div>
-  //       </div>
-  //        <button type="button" class="shop-delete-btn js-delete-btn">
-  //               </button>
-  //     </li>`;
-  // })
-  // .join('');
+      });
+    })
+    .join('');
+  shopList.addEventListener('click', onBtnTrashClick);
 
   return shopList.insertAdjacentHTML('beforeend', markup);
 }
 // }
 
 function onBtnTrashClick(evt) {
-const element = evt.target.closest('[data-id]');
-const id = element.dataset.id
+  const element = evt.target.closest('[data-id]');
+  const id = element.dataset.id;
+// console.log(id)
+if(evt.target.classList.contains('shop-delete-btn')){
+  const card = evt.target.closest('[data-id]')
 
-// id.classList.add('hidden')
+  card.classList.add('hidden')
+  removeBookFromLocalStorage(id)
 
-  if (evt.target.classList.contains('shop-delete-btn')) {
-    // const id = evt.target.parentNode.getAttribute('id');
-    removeBookFromLocalStorage(id);
 
-    cardRef.classList.add('hidden')
-  }
+}
+
+
 }
 
 function removeBookFromLocalStorage(bookId) {
-  const data = JSON.parse(localStorage.getItem('shopping-list'));
-  console.log(bookId);
-  // const newData = data.filter(( id ) => id !== bookId);
-
-  // localStorage.setItem('shopping-list', JSON.stringify(newData));
-  // const filtredCard = JSON.parse(localStorage.getItem('shopping-list'))
-  // shopList.innerHTML = '';
-  // renderBookCard(filtredCard);
-  // if (newData.length === 0) {
-  //   shopBgd.classList.remove('hidden');
-  // }
+ data = JSON.parse(localStorage.getItem('shopping-list'));
+  const filtredArr = data.filter(card => card !== bookId)
+  localStorage.setItem('shopping-list', JSON.stringify(filtredArr))
+  const check = localStorage.getItem('shopping-list')
+  console.log(check);
+  
 }
