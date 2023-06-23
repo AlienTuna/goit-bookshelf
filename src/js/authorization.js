@@ -12,9 +12,11 @@ import { getDatabase, ref, set, child, get, update } from 'firebase/database';
 const modalEl = document.querySelector('.backdrop');
 const openModalEl = document.querySelector('.open-modal');
 const formWrapperEl = document.querySelector('.form-wrapper');
-const displayShopEl = document.querySelector('.display-shop');
-console.dir(displayShopEl);
-displayShopEl.style.display = 'none';
+const displayShopEl = document.querySelector('.page-nav');
+
+// displayShopEl.style.display = 'none';
+// displayShopEl.remove();
+displayShopEl.classList.add('display-shop');
 
 let logOutBtn = null;
 
@@ -38,6 +40,7 @@ console.log(auth);
 
 const books = [1, 2, 3];
 console.log('qwer');
+
 function userSignOut() {
   signOut(auth)
     .then(() => {
@@ -46,7 +49,10 @@ function userSignOut() {
       logOutBtn.remove();
       openModalEl.textContent = 'Sign up';
       openModalEl.disabled = false;
-      displayShopEl.style.display = 'none';
+      // displayShopEl.style.display = 'none';
+      // displayShopEl.add();
+      // document.createElement(displayShopEl);
+      displayShopEl.classList.add('display-shop');
     })
     .catch(error => {
       console.log(error);
@@ -119,7 +125,9 @@ function getData() {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         openModalEl.textContent = snapshot.val().name;
-        displayShopEl.style.display = 'block';
+        // displayShopEl.style.display = 'block';
+        displayShopEl.classList.remove('display-shop');
+        // displayShopEl.removeAttribute(name);
       } else {
         console.log('No data available');
       }
@@ -206,6 +214,7 @@ function chekAuth() {
       const uid = user.uid;
       console.log(user);
       getData();
+
       // ...
     } else {
       // User is signed out
