@@ -566,11 +566,11 @@
     display: flex;
     gap: 24px;
 }
-/* @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
     .header-buttons {
         margin-left: 745px;
     }
-} */
+}
 
 button.open-modal.login-header-btn {
     font-size: 14;
