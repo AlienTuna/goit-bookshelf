@@ -7,7 +7,7 @@ renderCharityBar(charityList);
 
 const slider = tns({
   nav: false,
-  container: '.my-slider',
+  container: '.my-slider.charity-list',
   axis: 'vertical',
   speed: 400,
   controls: false,
