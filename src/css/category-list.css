@@ -35,31 +35,31 @@ img {
 .category-books-list__container {
   max-width: 100%;
 
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* margin: 0 auto; */
+  /* padding-left: 20px;
+  padding-right: 20px; */
   /* border: 3px solid blueviolet; */
 }
 
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
   .category-books-list__container {
     width: 375px;
   }
-}
-@media screen and (min-width: 768px) {
+} */
+/* @media screen and (min-width: 768px) {
   .category-books-list__container {
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
-}
-@media screen and (min-width: 1440px) {
+} */
+/* @media screen and (min-width: 1440px) {
   .category-books-list__container {
     width: 996px;
 
     padding: 0;
   }
-}
+} */
 /* ============== */
 .category-books-list__title {
   margin-bottom: 40px;
@@ -138,25 +138,25 @@ img {
   flex-direction: column;
   gap: 14px;
 }
+@media screen and (min-width: 480px) {
+  .card__container.card {
+    max-width: 335px;
+  }
 @media screen and (min-width: 768px) {
   .card__container.card {
-    width: 335px;
+    width: 218px;
   }
 }
 @media screen and (min-width: 1440px) {
   .card__container.card {
-    max-width: 218px;
+    width: 256px;
   }
 }
-@media screen and (min-width: 480px) {
-  .card__container.card {
-    max-width: 180px;
-  }
 }
 /* =========================== */
 .card__img-container {
   width: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 @media screen and (min-width: 480px) {
   .card__img-container {
@@ -171,12 +171,16 @@ img {
 @media screen and (min-width: 1440px) {
   .card__img-container {
     height: 256px;
+    width: 180px;
   }
 }
 /* =============================== */
 .card__img {
   width: 100%;
   border-radius: 8px;
+  
+  box-sizing: border-box;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 480px) {
@@ -247,7 +251,7 @@ opacity: 0;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
-  color: #111111;
+  color: var(--text-secondary-color);
 }
 
 .card__author {

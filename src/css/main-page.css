@@ -66,6 +66,7 @@
   color: #b4afaf;
   margin-top: 0;
   margin-bottom: 18px;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
@@ -122,7 +123,7 @@
   font-size: 16px;
   line-height: calc(18 / 16);
   letter-spacing: -0.04em;
-  color: #111111;
+  color: var(--text-secondary-color);
   margin-top: 0;
   margin-bottom: 4px;
   height: 18px;
@@ -164,8 +165,9 @@
   line-height: calc(18 / 14);
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--text-secondary-color);
   cursor: pointer;
+  background-color: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -180,12 +182,13 @@
   }
 }
 
-.books-btn:hover {
+.books-btn:hover,
+.books-btn:focus {
   background-color: #4f2ee8;
   color: #fff;
 }
 
-.books-btn:focus {
+.books-btn:focus{
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
 }
 

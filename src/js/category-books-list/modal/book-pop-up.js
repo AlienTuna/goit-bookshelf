@@ -44,9 +44,9 @@ function renderTargetCategory(id) {
         <p class="modal__author">${id.author}</p>
         <p class="modal__book-desc">${id.description}</p>
         <ul class="modal__list">
-          <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link"><img src=""><img src="${amazon}" alt=""></a></li>
-          <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link"><img src="${applebook}" alt=""></a></li>
-          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"><img src="${bookshop}" alt=""></a></li>
+          <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link"><img class="store-link-img amazon-img" src="${amazon}" alt=""></a></li>
+          <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link"><img class="store-link-img" src="${applebook}" alt=""></a></li>
+          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"><img class="store-link-img" src="${bookshop}" alt=""></a></li>
         </ul>
       
 </div>

@@ -295,7 +295,7 @@ border: none;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 
-  color: #111111;
+  color: var(--text-secondary-color);
 
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -341,4 +341,27 @@ border: none;
 
 .hidden {
   display: none;
+}
+.an-book-info-modal {
+  background-color: var(--body-secondary-color);
+  position: relative;
+}
+.modal__close-img {
+  width:28px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.an-book-info-modal .modal__close-img,
+.an-book-info-modal .modal__title{
+  color: var(--text-secondary-color);
+  fill: var(--text-secondary-color);
+}
+
+.an-book-info-modal .store-link-img{
+  filter: grayscale(100%);
+}
+
+body.dark .an-book-info-modal .amazon-img{
+  filter: invert(75%) grayscale(100%);
 }
