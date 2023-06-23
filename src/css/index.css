@@ -1,3 +1,4 @@
+@import url('./reset-styles.css'); /* reset styles for common elements*/
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./main-page.css');
