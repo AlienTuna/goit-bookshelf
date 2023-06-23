@@ -10,6 +10,8 @@
 
   function toggleModal() {
     refs.menu.classList.toggle("is-open");
+    refs.openMenuBtn.classList.toggle("an-js-hidden");
+    refs.closeMenuBtn.classList.toggle("an-js-hidden");
   }
 })();
 

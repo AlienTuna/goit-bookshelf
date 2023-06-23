@@ -1,25 +1,30 @@
 <header class="header-section">
   <div class="container page-header-wrapper">
-    <a href="./index.html" class="link logo" style="display: flex;">
-      <img width="25" height="25" class="logo-img" src="./image/logo.svg" alt="logo" />
-      <span class="span">Bookshelf</span>
-    </a>
-    <nav class="page-nav display-shop">
-      <ul class="menu-list list nav-desktop-list">
-        <li class="menu-item">
-          <a class="menu-link current link home-nav-link" href="./index.html">HOME</a>
-        </li>
-        <li class="menu-item">
-          <a class="menu-link link shopping-nav-link" href="./shopping.html">
-            <span class="shopping-list">SHOPPING LIST</span>
 
-            <svg class="logo-shop" width="20" height="20">
-              <use href="/src/image/shop-symboldefs.svg#icon-shop"></use>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="header-logo-navigation">
+      <a href="./index.html" class="link logo" style="display: flex;">
+        <img width="25" height="25" class="logo-img" src="./image/logo.svg" alt="logo" />
+        <span class="span">Bookshelf</span>
+      </a>
+
+      <nav class="page-nav display-shop">
+        <ul class="menu-list list nav-desktop-list">
+          <li class="menu-item">
+            <a class="menu-link current link home-nav-link" href="./index.html">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link link shopping-nav-link" href="./shopping.html">
+              <span class="shopping-list">SHOPPING LIST</span>
+              <svg class="logo-shop" width="20" height="20">
+                <use href="/src/image/header-symbol-defs.svg#icon-shop"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
     <div class="header-buttons">
       <div class="themes">
         <!-- <label class="switch" data-start>
@@ -32,7 +37,7 @@
         </label>
       </div>
 
-      <button type="button" class="open-modal">Sign up</button>
+      <button type="button" class="open-modal login-header-btn">Sign up<span class="login-btn-arrow">➜</span></button>
     </div>
     
     <div class="backdrop is-hidden">
@@ -51,29 +56,32 @@
 
     <!-- MOBILE MENU BUTTON OPEN -->
 
-    <button type="button" class="mobile-menu-open-btn" data-menu-open>
-      <svg class="mobile-menu-icon" width="32" height="22">
-        <use href="./image/logo.svg"></use>
-      </svg>
-    </button>
+    <div class="mobile-menu-btns">
+
+      <button type="button" class="mobile-menu-open-btn" data-menu-open>
+        <svg class="mobile-menu-open-icon" width="24" height="24">
+          <use href="/src/image/header-symbol-defs.svg#icon-open-menu-btn"></use>
+        </svg>
+      </button>
+  
+      <button type="button" class="mobile-menu-close-btn an-js-hidden" data-menu-close>
+        <svg class="mobile-menu-close-icon" width="24" height="24">
+          <use href="/src/image/header-symbol-defs.svg#icon-close"></use>
+        </svg>
+      </button>
+
+    </div>
+
   </div>
 
   <!-- MOBILE MENU WINDOW -->
 
   <div class="mobile-menu-container-wrapper" data-menu>
-    <div class="mobile-menu-container">
-      <button type="button" class="mobile-menu-close-btn" data-menu-close>
-        <svg class="mobile-menu-close-icon" width="36" height="36">
-          <use href="./image/close-btn.svg"></use>
-        </svg>
-      </button>
 
-      <!-- <a href="./index.html" class="link logo" style="display: flex;">
-  <img src="./image/logo.svg" alt="logo" />
-  <span class="span">Bookshelf</span>
-  </a> -->
+    <div class="mobile-menu-container">
 
     </div>
+
     <nav>
       <div class="burder-wellcome">
         <p>Wellcome!</p>
@@ -86,7 +94,9 @@
         <li>
           <a class="burger-nav-shopping link" href="./shopping.html">
             <span class="shopping-list ">SHOPPING LIST</span>
-            <img src="./image/shop-white.svg" alt="logo-shop" class="burger-img logo-shop">
+            <svg class="burger-img logo-shop" width="20" height="20">
+              <use href="/src/image/header-symbol-defs.svg#icon-shop"></use>
+            </svg>
           </a>
         </li>
       </ul>

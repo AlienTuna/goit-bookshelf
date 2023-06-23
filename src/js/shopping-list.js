@@ -71,7 +71,7 @@ function renderBookCard(array) {
     })
     .join('');
   shopList.addEventListener('click', onBtnTrashClick);
-
+  shopList.innerHTML = '';
   return shopList.insertAdjacentHTML('beforeend', markup);
 }
 // }
@@ -94,9 +94,19 @@ if(evt.target.classList.contains('shop-delete-btn')){
 
 function removeBookFromLocalStorage(bookId) {
  data = JSON.parse(localStorage.getItem('shopping-list'));
+
   const filtredArr = data.filter(card => card !== bookId)
   localStorage.setItem('shopping-list', JSON.stringify(filtredArr))
-  const check = localStorage.getItem('shopping-list')
-  console.log(check);
+  const check = JSON.parse(localStorage.getItem('shopping-list'));
+
+if (check.length < 1) {
+  showDefaultBg();
+}
   
+}
+
+function showDefaultBg() {
+    shopBgd.classList.remove('hidden');
+    shopList.classList.add('hidden');
+    return;
 }
