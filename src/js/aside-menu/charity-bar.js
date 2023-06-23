@@ -30,7 +30,7 @@ downBtn.onclick = function () {
 function renderCharityBar(charityList) {
   const markup = charityList.map(item => `
   <li class="charity-list-item">
-    <a href="${item.url}">
+    <a href="${item.url}" target="_blank">
       <img class="charity-fond-img" srcset="${item.img}" alt="${item.title}">
     </a>
   </li>

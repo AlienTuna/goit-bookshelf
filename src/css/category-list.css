@@ -27,7 +27,8 @@ img {
 } */
 @media screen and (min-width: 1440px) {
   .category-books-list {
-    padding: 40px 40px;
+    padding: 40px;
+    padding-top: 0;
   }
 }
 /* =============CONTAINER======================================= */
